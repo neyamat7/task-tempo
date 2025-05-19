@@ -9,6 +9,7 @@ export default function Home() {
       <Hero></Hero>
       <FeaturedSection></FeaturedSection>
       <AboutUs></AboutUs>
+      <Testimonials></Testimonials>
     </>
   );
 }
