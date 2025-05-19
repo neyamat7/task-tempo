@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import useAuth from "../../context/AuthContext/AuthContext";
+// import { useAuth } from "../../context/AuthContext/AuthContext";
 
-const AddTask = () => {
+const UpdateTask = () => {
+  const { taskId } = useParams(); // Get task ID from URL
+  const navigate = useNavigate();
   const { user } = useAuth();
 
-  const [taskData, setTaskData] = useState({
-    title: "",
-    category: "Web Development",
-    description: "",
-    deadline: "",
-    budget: "",
+  // Mock task data - replace this with real API call later
+  const [task, setTask] = useState({
+    title: "Design a logo for new startup",
+    category: "Graphic Design",
+    description: "Create a modern, minimalist logo.",
+    deadline: "2025-04-15",
+    budget: "150",
     userEmail: user?.email || "",
     userName: user?.displayName || "",
   });
@@ -26,29 +31,47 @@ const AddTask = () => {
     "Copywriting",
   ];
 
+  // Load task data on mount (from DB/mock)
+  useEffect(() => {
+    // Here you can fetch task by ID from your backend
+    // Example:
+    // fetch(`/api/tasks/${taskId}`).then(res => res.json()).then(data => setTask(data))
+  }, [taskId]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTaskData((prev) => ({ ...prev, [name]: value }));
+    setTask((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can send taskData to your backend or Firebase here
-    console.log("Task submitted:", taskData);
-    toast.success("Task posted successfully!");
+
+    // Simulate update request
+    console.log("Updated task:", task);
+
+    // Show success notification
+    toast.success("✅ Task updated successfully!");
+
+    // Navigate back after update
+    setTimeout(() => {
+      navigate("/my-task");
+    }, 1500);
   };
 
   return (
-    <div className="min-h-screen bg-[#EFE3C2] py-10 px-4">
-      <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8 border border-[#85A947]/20">
+    <section className="py-10 bg-[#EFE3C2] min-h-screen">
+      <div className="max-w-3xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-6 text-center text-[#123524]">
-          Post a New Task
+          Update Task
         </h2>
         <p className="text-center text-sm text-[#3E7B27] mb-8">
-          Fill in the details below to post a task for freelancers.
+          Edit your task details below.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white shadow-lg rounded-xl p-8 border border-[#85A947]/20 space-y-6"
+        >
           {/* Task Title */}
           <div>
             <label className="block text-sm font-medium text-[#123524] mb-1">
@@ -57,7 +80,7 @@ const AddTask = () => {
             <input
               type="text"
               name="title"
-              value={taskData.title}
+              value={task.title}
               onChange={handleChange}
               required
               placeholder="e.g., Build a landing page"
@@ -72,8 +95,9 @@ const AddTask = () => {
             </label>
             <select
               name="category"
-              value={taskData.category}
+              value={task.category}
               onChange={handleChange}
+              required
               className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#85A947] bg-white text-[#123524]"
             >
               {categories.map((cat, index) => (
@@ -91,7 +115,7 @@ const AddTask = () => {
             </label>
             <textarea
               name="description"
-              value={taskData.description}
+              value={task.description}
               onChange={handleChange}
               required
               rows="4"
@@ -108,7 +132,7 @@ const AddTask = () => {
             <input
               type="date"
               name="deadline"
-              value={taskData.deadline}
+              value={task.deadline}
               onChange={handleChange}
               required
               className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#85A947] bg-white text-[#123524]"
@@ -123,7 +147,7 @@ const AddTask = () => {
             <input
               type="number"
               name="budget"
-              value={taskData.budget}
+              value={task.budget}
               onChange={handleChange}
               required
               min="1"
@@ -132,7 +156,7 @@ const AddTask = () => {
             />
           </div>
 
-          {/* Read Only - User Email */}
+          {/* User Email (Read Only) */}
           <div>
             <label className="block text-sm font-medium text-[#123524] mb-1">
               Your Email
@@ -140,13 +164,13 @@ const AddTask = () => {
             <input
               type="email"
               name="userEmail"
-              value={taskData.userEmail}
+              value={task.userEmail}
               readOnly
-              className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md bg-[#EFE3C2] text-[#123524] cursor-not-allowed"
+              className="w-full px-4 py-2 bg-[#EFE3C2] cursor-not-allowed text-[#123524] border border-[#3E7B27]/30 rounded-md"
             />
           </div>
 
-          {/* Read Only - User Name */}
+          {/* User Name (Read Only) */}
           <div>
             <label className="block text-sm font-medium text-[#123524] mb-1">
               Your Name
@@ -154,25 +178,25 @@ const AddTask = () => {
             <input
               type="text"
               name="userName"
-              value={taskData.userName}
+              value={task.userName}
               readOnly
-              className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md bg-[#EFE3C2] text-[#123524] cursor-not-allowed"
+              className="w-full px-4 py-2 bg-[#EFE3C2] cursor-not-allowed text-[#123524] border border-[#3E7B27]/30 rounded-md"
             />
           </div>
 
-          {/* Submit Button */}
+          {/* Update Button */}
           <div className="mt-6">
             <button
               type="submit"
               className="w-full btn rounded-full bg-[#85A947] hover:bg-[#3E7B27] text-[#EFE3C2] font-semibold py-3 transition-colors"
             >
-              Post Task
+              Update Task
             </button>
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default AddTask;
+export default UpdateTask;

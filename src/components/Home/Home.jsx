@@ -1,13 +1,14 @@
-import useAuth from "../../context/AuthContext/AuthContext";
+import AboutUs from "../AboutUs/AboutUs";
+import FeaturedSection from "../FeaturedSection/FeaturedSection";
 import Hero from "../Hero/Hero";
+import Testimonials from "../Testimonials/Testimonials";
 
 export default function Home() {
-  const { user } = useAuth();
-  //   console.log(user.photoURL);
-
   return (
     <>
       <Hero></Hero>
+      <FeaturedSection></FeaturedSection>
+      
     </>
   );
 }

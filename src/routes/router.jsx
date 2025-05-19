@@ -8,6 +8,8 @@ import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import MyPostedTask from "../components/MyPostedTask/MyPostedTask";
 import SignUp from "../components/SignUp/SignUp";
+import TaskDetails from "../components/TaskDetailis/TaskDetailis";
+import UpdateTask from "../components/UpdateTask/UpdateTask";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ export const router = createBrowserRouter([
       {
         path: "my-tasks",
         element: <MyPostedTask></MyPostedTask>,
+      },
+      {
+        path: "details",
+        element: <TaskDetails></TaskDetails>,
+      },
+      {
+        path: "update",
+        element: <UpdateTask></UpdateTask>,
       },
     ],
   },
