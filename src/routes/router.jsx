@@ -49,7 +49,10 @@ export const router = createBrowserRouter([
         path: "details",
         element: <TaskDetails></TaskDetails>,
       },
-     
+      {
+        path: "update",
+        element: <UpdateTask></UpdateTask>,
+      },
     ],
   },
 ]);
