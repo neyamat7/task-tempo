@@ -45,14 +45,7 @@ export const router = createBrowserRouter([
         path: "my-tasks",
         element: <MyPostedTask></MyPostedTask>,
       },
-      {
-        path: "details",
-        element: <TaskDetails></TaskDetails>,
-      },
-      {
-        path: "update",
-        element: <UpdateTask></UpdateTask>,
-      },
+      
     ],
   },
 ]);
