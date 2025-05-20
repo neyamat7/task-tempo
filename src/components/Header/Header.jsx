@@ -10,7 +10,8 @@ const Header = () => {
   const { user, signOutUser } = useAuth();
   const userEmail = user?.email || user?.providerData[0].email;
   const { pathname, state } = useLocation();
-  const [showUserInfo, setShowUserInfo] = useState(false);
+  // const [showUserInfo, setShowUserInfo] = useState(false);
+
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
@@ -42,13 +43,13 @@ const Header = () => {
   }
 
   // Handle hover events for the dropdown
-  const handleMouseEnter = () => {
-    setShowUserInfo(true);
-  };
+  // const handleMouseEnter = () => {
+  //   setShowUserInfo(true);
+  // };
 
-  const handleMouseLeave = () => {
-    setShowUserInfo(false);
-  };
+  // const handleMouseLeave = () => {
+  //   setShowUserInfo(false);
+  // };
 
   const navLinks = (
     <>
@@ -161,8 +162,8 @@ const Header = () => {
 
           {user && (
             <div
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+              // onMouseEnter={handleMouseEnter}
+              // onMouseLeave={handleMouseLeave}
               className="dropdown dropdown-end dropdown-hover"
             >
               <div

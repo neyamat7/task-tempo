@@ -10,7 +10,7 @@ const BrowseTasks = () => {
     const fetchTasks = async () => {
       try {
         // Replace this with actual API call
-        const res = await fetch("http://localhost:3000/tasks");
+        const res = await fetch("https://freelance-task-deploy-server.vercel.app/tasks");
         const data = await res.json();
 
         setTasks(data);

@@ -18,7 +18,9 @@ const TaskDetails = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/tasks/${taskId}`);
+        const res = await fetch(
+          `https://freelance-task-deploy-server.vercel.app/${taskId}`
+        );
         const data = await res.json();
 
         setTimeout(() => {
@@ -44,7 +46,7 @@ const TaskDetails = () => {
       bids: addNewBids,
     };
 
-    fetch(`http://localhost:3000/tasks/${taskId}`, {
+    fetch(`https://freelance-task-deploy-server.vercel.app/${taskId}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -72,7 +74,7 @@ const TaskDetails = () => {
       bids: updatedBids,
     };
 
-    fetch("http://localhost:3000/users", {
+    fetch("https://freelance-task-deploy-server.vercel.app/users", {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

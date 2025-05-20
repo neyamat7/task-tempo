@@ -17,7 +17,9 @@ const MyPostedTasksTable = () => {
     const fetchTasks = async () => {
       try {
         // Replace this with actual API call
-        const res = await fetch(`http://localhost:3000/user-tasks/${userUid}`);
+        const res = await fetch(
+          `https://freelance-task-deploy-server.vercel.app/${userUid}`
+        );
         const data = await res.json();
 
         setTasks(data);
@@ -48,9 +50,12 @@ const MyPostedTasksTable = () => {
 
     if (confirm.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:3000/tasks/${taskId}`, {
-          method: "DELETE",
-        });
+        const res = await fetch(
+          `https://freelance-task-deploy-server.vercel.app/${taskId}`,
+          {
+            method: "DELETE",
+          }
+        );
         console.log(res);
         if (res.ok) {
           setTasks(tasks.filter((singleTask) => singleTask._id !== taskId));

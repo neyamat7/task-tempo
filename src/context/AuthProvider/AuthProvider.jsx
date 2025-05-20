@@ -61,7 +61,9 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
 
       if (currentUser) {
-        fetch(`http://localhost:3000/users/${currentUser.email}`)
+        fetch(
+          `https://freelance-task-deploy-server.vercel.app/users/${currentUser.email}`
+        )
           .then((res) => res.json())
           .then((data) => {
             setBids(data.bids || []);

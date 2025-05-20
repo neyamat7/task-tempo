@@ -43,7 +43,7 @@ const SignUp = () => {
         };
 
         // save user info in DB
-        fetch("http://localhost:3000/users", {
+        fetch("https://freelance-task-deploy-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -175,7 +175,7 @@ const SignUp = () => {
         };
 
         // save user info in DB
-        fetch("http://localhost:3000/users", {
+        fetch("https://freelance-task-deploy-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
