@@ -30,35 +30,35 @@ const TaskDetails = () => {
     setBidsCount(bids);
   }, [taskId, bids]);
 
-  // Simulate bidding action
-  // const handleBidClick = (taskId) => {
-  //   console.log(taskId);
-  //   if (bids.includes(taskId)) {
-  //     alert("you already have bid this task");
-  //     return;
-  //   }
 
-  //   const updatedBids = [...bids, taskId];
-  //   const updateThings = {
-  //     email: user.email,
-  //     bids: updatedBids,
-  //   };
+  const handleBidClick = (taskId) => {
+    console.log(taskId);
+    if (bids.includes(taskId)) {
+      alert("you already have bid this task");
+      return;
+    }
 
-  //   fetch("http://localhost:3000/users", {
-  //     method: "PATCH",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(updateThings),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setBids(updatedBids);
-  //       console.log(data);
-  //     });
+    const updatedBids = [...bids, taskId];
+    const updateThings = {
+      email: user.email,
+      bids: updatedBids,
+    };
 
-  //   alert("Your bid has been placed!");
-  // };
+    fetch("http://localhost:3000/users", {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateThings),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setBids(updatedBids);
+        console.log(data);
+      });
+
+    alert("Your bid has been placed!");
+  };
 
   if (loading) {
     return (
