@@ -124,20 +124,20 @@ const MyPostedTasksTable = () => {
                       key={task._id}
                       className="hover:bg-[#EFE3C2]/10 transition-colors"
                     >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-[#123524]">
+                      <td className="px-6  py-4 text-md font-medium  text-[#123524]">
                         {task.title}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-[#123524]">
+                      <td className="px-6  py-4 whitespace-nowrap text-md font-medium  text-[#123524]">
                         {new Date(task.deadline).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
                         })}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-[#123524]">
+                      <td className="px-6  py-4 whitespace-nowrap text-md font-medium text-[#123524]">
                         {task.budget}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-[#123524]">
-                        <span className="badge badge-sm bg-[#85A947]/20 text-[#3b4c1d] text-base p-3 min-w-[70px]">
+                      <td className="px-3   py-4 whitespace-nowrap text-sm text-[#123524] ">
+                        <span className="btn btn-sm rounded-full border-none bg-[#85A947]/20 text-[#3b4c1d] text-base p-3 min-w-[70px]">
                           {task.bids.length} bid
                           {task.bids.length !== 1 && task.bids.length > 0
                             ? "s"
@@ -147,13 +147,13 @@ const MyPostedTasksTable = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-right space-x-2">
                         <Link
                           to={`/update/${task._id}`}
-                          className="btn btn-xs rounded-full bg-[#85A947] hover:bg-[#3E7B27] text-white"
+                          className="btn btn-sm border-none rounded-full bg-[#85A947] hover:bg-[#3E7B27] text-white"
                         >
                           Update
                         </Link>
                         <button
                           onClick={() => handleDeleteTask(task._id)}
-                          className="btn btn-xs rounded-full bg-red-500 hover:bg-red-600 text-white"
+                          className="btn btn-sm border-none rounded-full bg-red-500 hover:bg-red-600 text-white"
                         >
                           Delete
                         </button>
@@ -170,38 +170,59 @@ const MyPostedTasksTable = () => {
                   key={task._id}
                   className="bg-white p-5 rounded-lg shadow-md border-l-4 border-[#85A947] hover:shadow-lg transition-shadow"
                 >
-                  <div className="space-y-2">
-                    <div>
-                      <span className="text-xs text-[#3E7B27]">Category:</span>
-                      <p className="font-medium text-[#123524]">{task.title}</p>
+                  <div className="flex flex-col justify-between gap-10">
+                    <div className="flex flex-col gap-5">
+                      <div>
+                        <span className="text-base text-[#3E7B27]">Title:</span>
+                        <p className="font-medium text-[#123524]">
+                          {task.title}
+                        </p>
+                      </div>
+
+                      <div>
+                        <span className="text-base text-[#3E7B27]">
+                          Deadline:
+                        </span>
+                        <p className="text-[#123524]">
+                          {new Date(task.deadline).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </p>
+                      </div>
+
+                      <div>
+                        <span className="text-base text-[#3E7B27]">
+                          Budget:
+                        </span>
+                        <p className="text-[#123524]">{task.budget}</p>
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-xs text-[#3E7B27]">Deadline:</span>
-                      <p className="text-[#123524]">{task.deadline}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs text-[#3E7B27]">Budget:</span>
-                      <p className="text-[#123524]">{task.budget}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs text-[#3E7B27]">Bids:</span>
-                      <p className="text-[#123524]">
-                        {task.bids} bid{task.bids !== 1 ? "s" : ""}
-                      </p>
-                    </div>
-                    <div className="flex justify-end gap-2 mt-3">
-                      <Link
-                        to={`/update/${task._id}`}
-                        className="btn btn-xs rounded-full bg-[#85A947] hover:bg-[#3E7B27] text-white"
-                      >
-                        Update
-                      </Link>
-                      <button
-                        onClick={() => handleDeleteTask(task._id)}
-                        className="btn btn-xs rounded-full bg-red-500 hover:bg-red-600 text-white"
-                      >
-                        Delete
-                      </button>
+
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="btn btn-sm rounded-full border-none bg-[#85A947]/20 text-[#3b4c1d] text-base p-3 min-w-[70px]">
+                          {task.bids.length} bid
+                          {task.bids.length !== 1 && task.bids.length > 0
+                            ? "s"
+                            : ""}
+                        </span>
+                      </div>
+
+                      <div className="flex justify-end gap-2">
+                        <Link
+                          to={`/update/${task._id}`}
+                          className="btn btn-sm border-none rounded-full bg-[#85A947] hover:bg-[#3E7B27] text-white"
+                        >
+                          Update
+                        </Link>
+                        <button
+                          onClick={() => handleDeleteTask(task._id)}
+                          className="btn btn-sm border-none rounded-full bg-red-500 hover:bg-red-600 text-white"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
