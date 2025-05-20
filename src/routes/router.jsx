@@ -53,7 +53,9 @@ export const router = createBrowserRouter([
       {
         path: "update/:taskId",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/tasks/${params.taskId}`),
+          fetch(
+            `https://freelance-task-deploy-server.vercel.app/tasks/${params.taskId}`
+          ),
         hydrateFallbackElement: <Loading></Loading>,
         element: <UpdateTask></UpdateTask>,
       },
