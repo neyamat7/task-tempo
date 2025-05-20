@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../context/AuthContext/AuthContext";
 
 const MyPostedTasksTable = () => {
-  const { user } = useAuth();
+  const { user, setBids } = useAuth();
   console.log(user?.uid);
 
   const [tasks, setTasks] = useState([]);
@@ -54,6 +54,11 @@ const MyPostedTasksTable = () => {
         console.log(res);
         if (res.ok) {
           setTasks(tasks.filter((singleTask) => singleTask._id !== taskId));
+
+          setBids((prevBids) => {
+            return prevBids.filter((prevId) => prevId !== taskId);
+          });
+
           Swal.fire("Deleted!", "Product has been deleted.", "success");
         } else {
           Swal.fire("Error", "Failed to delete product.", "error");
