@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
-import { toast } from "react-toastify";
-import useAuth from "../../context/AuthContext/AuthContext";
-// import { useAuth } from "../../context/AuthContext/AuthContext";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useLoaderData, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const UpdateTask = () => {
-  const { taskId } = useParams(); // Get task ID from URL
   const navigate = useNavigate();
-  const { user } = useAuth();
-
-  // Mock task data - replace this with real API call later
-  const [task, setTask] = useState({
-    title: "Design a logo for new startup",
-    category: "Graphic Design",
-    description: "Create a modern, minimalist logo.",
-    deadline: "2025-04-15",
-    budget: "150",
-    userEmail: user?.email || "",
-    userName: user?.displayName || "",
-  });
+  const tasktoUpdate = useLoaderData();
+  const [task, setTask] = useState(tasktoUpdate);
+  console.log(task);
 
   const categories = [
     "Web Development",
@@ -31,31 +21,41 @@ const UpdateTask = () => {
     "Copywriting",
   ];
 
-  // Load task data on mount (from DB/mock)
-  useEffect(() => {
-    // Here you can fetch task by ID from your backend
-    // Example:
-    // fetch(`/api/tasks/${taskId}`).then(res => res.json()).then(data => setTask(data))
-  }, [taskId]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTask((prev) => ({ ...prev, [name]: value }));
   };
+  const handleDateChange = (date) => {
+    setTask((prev) => ({ ...prev, deadline: date }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { _id, ...updatedData } = task;
+    console.log(updatedData);
 
-    // Simulate update request
-    console.log("Updated task:", task);
+    const updatedTaskData = updatedData;
 
-    // Show success notification
-    toast.success("✅ Task updated successfully!");
-
-    // Navigate back after update
-    setTimeout(() => {
-      navigate("/my-task");
-    }, 1500);
+    fetch(`http://localhost:3000/tasks/${task._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedTaskData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Successfully updated product",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        navigate("/my-tasks");
+      });
   };
 
   return (
@@ -129,14 +129,29 @@ const UpdateTask = () => {
             <label className="block text-sm font-medium text-[#123524] mb-1">
               Deadline
             </label>
-            <input
-              type="date"
-              name="deadline"
-              value={task.deadline}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#85A947] bg-white text-[#123524]"
-            />
+            <div className="relative">
+              <DatePicker
+                selected={task.deadline}
+                onChange={handleDateChange}
+                minDate={new Date()}
+                dateFormat="yyyy-MM-dd"
+                className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#85A947] bg-white text-[#123524]"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 absolute right-3 top-2.5 text-[#85A947]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
           </div>
 
           {/* Budget */}

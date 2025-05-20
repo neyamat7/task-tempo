@@ -5,6 +5,7 @@ import BrowseTasks from "../components/BrowseTasks/BrowseTasks";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import ForgetPassword from "../components/ForgetPassword/ForgetPassword";
 import Home from "../components/Home/Home";
+import Loading from "../components/Loading/Loading";
 import Login from "../components/Login/Login";
 import MyPostedTask from "../components/MyPostedTask/MyPostedTask";
 import SignUp from "../components/SignUp/SignUp";
@@ -46,11 +47,14 @@ export const router = createBrowserRouter([
         element: <MyPostedTask></MyPostedTask>,
       },
       {
-        path: "details",
+        path: "details/:taskId",
         element: <TaskDetails></TaskDetails>,
       },
       {
-        path: "update",
+        path: "update/:taskId",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/tasks/${params.taskId}`),
+        hydrateFallbackElement: <Loading></Loading>,
         element: <UpdateTask></UpdateTask>,
       },
     ],

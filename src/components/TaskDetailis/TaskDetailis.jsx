@@ -1,51 +1,98 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import useAuth from "../../context/AuthContext/AuthContext";
 
 const TaskDetails = () => {
+  const { bids, user, setBids } = useAuth();
   const { taskId } = useParams();
+  const [task, setTask] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [bidsCount, setBidsCount] = useState(bids);
 
-  // Mock task data for demo purposes
-  const [task] = useState({
-    title: "Design a logo for a new brand",
-    category: "Graphic Design",
-    description:
-      "Create a modern, minimalist logo that reflects the brand's identity. Deliverables include vector files and multiple variations.",
-    deadline: "2025-04-15T00:00:00Z",
-    budget: 200,
-    userName: "Jane Doe",
-    userEmail: "jane@example.com",
-    postedAt: "2025-03-20T10:00:00Z",
-    imageUrl: "/api/placeholder/800/450", // Replace with actual image URL from DB
-  });
+  useEffect(() => {
+    const fetchTask = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/tasks/${taskId}`);
+        const data = await res.json();
 
-  const [bidsCount, setBidsCount] = useState(0); // Track number of bids
+        setTimeout(() => {
+          setTask(data);
+          setLoading(false);
+        }, 300);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchTask();
+
+    setBidsCount(bids);
+  }, [taskId, bids]);
 
   // Simulate bidding action
-  const handleBidClick = () => {
-    setBidsCount((prev) => prev + 1);
-    alert("Your bid has been placed!");
-  };
+  // const handleBidClick = (taskId) => {
+  //   console.log(taskId);
+  //   if (bids.includes(taskId)) {
+  //     alert("you already have bid this task");
+  //     return;
+  //   }
+
+  //   const updatedBids = [...bids, taskId];
+  //   const updateThings = {
+  //     email: user.email,
+  //     bids: updatedBids,
+  //   };
+
+  //   fetch("http://localhost:3000/users", {
+  //     method: "PATCH",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(updateThings),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBids(updatedBids);
+  //       console.log(data);
+  //     });
+
+  //   alert("Your bid has been placed!");
+  // };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <span className="loading loading-spinner loading-lg text-[#85A947]"></span>
+      </div>
+    );
+  }
 
   return (
-    <section className="py-12 bg-[#EFE3C2] min-h-screen">
+    <section className="pb-12 pt-5 bg-[#EFE3C2] min-h-screen">
       {/* Top Banner */}
-      <div className="bg-[#3E7B27] text-white py-3 px-6 text-center">
-        <p className="text-sm md:text-base">
-          You bid for <span className="font-bold">{bidsCount}</span> opportunity
-          {bidsCount !== 1 ? "s" : ""}
-        </p>
-      </div>
+      {bids.length > 0 && (
+        <div className="px-5 md:px-2  max-w-[992px] mx-auto mb-2">
+          <div className="bg-[#3E7B27] text-white py-3 text-center max-w-[992px] mx-auto rounded-lg">
+            <p className="text-sm md:text-base">
+              You bid for <span className="font-bold">{bidsCount.length}</span>{" "}
+              opportunity
+              {bidsCount !== 1 ? "s" : ""}
+            </p>
+          </div>
+        </div>
+      )}
 
-      <div className="max-w-5xl mx-auto px-4 pt-8">
+      <div className="max-w-5xl mx-auto px-4 ">
         {/* Task Card */}
         <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-[#85A947]/20 hover:shadow-xl transition-shadow">
           {/* Image Section */}
-          <div className="mb-8 overflow-hidden rounded-lg shadow-md">
+          <div className="mb-8 overflow-hidden rounded-lg shadow-md max-h-[500px] flex justify-center">
             <img
               //   src={task.imageUrl}
               src="https://thumbs.dreamstime.com/b/freelance-young-woman-shocked-tasks-searches-information-freelance-young-woman-shocked-tasks-searches-information-ponders-177342365.jpg"
               alt={`Preview of ${task.title}`}
-              className="w-full h-auto object-cover"
+              className="w-full h-full mx-auto object-cover border"
             />
           </div>
 
@@ -108,16 +155,10 @@ const TaskDetails = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
             <button
-              onClick={handleBidClick}
-              className="btn btn-lg rounded-full bg-[#85A947] hover:bg-[#3E7B27] text-white w-full sm:w-auto transition-colors"
+              onClick={() => handleBidClick(task._id)}
+              className="btn btn-lg rounded-full bg-[#85A947] hover:bg-[#3E7B27] text-white w-full sm:w-auto transition-colors border border-[#85A947]"
             >
               Bid for this Task
-            </button>
-            <button
-              className="btn btn-lg rounded-full bg-transparent border border-[#85A947] text-[#123524] hover:bg-[#85A947]/10 w-full sm:w-auto transition-colors"
-              onClick={() => alert("Message poster functionality goes here")}
-            >
-              Message Poster
             </button>
           </div>
         </div>

@@ -37,7 +37,7 @@ const Hero = () => {
       <div className="swiper mySwiper">
         <div className="swiper-wrapper">
           {slidesData.map((slide) => (
-            <SlideItem slide={slide} />
+            <SlideItem key={slide.id} slide={slide} />
           ))}
         </div>
         <div className="swiper-pagination"></div>

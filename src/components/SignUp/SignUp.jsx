@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router";
 
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineErrorOutline } from "react-icons/md";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import useAuth from "../../context/AuthContext/AuthContext";
 
 const SignUp = () => {
@@ -24,17 +24,46 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [photoError, setPhotoError] = useState("");
 
-  const notify = () =>
-    toast.success(
-      "Your registration is complete. Welcome to seamless bill payments!"
-    );
+  // const notify = () =>
+  //   toast.success(
+  //     "Your registration is complete. Welcome to seamless bill payments!"
+  //   );
 
   const { createUser, setUser, updateUser, googleSignIn } = useAuth();
 
   function handleGoogleSignIn() {
     googleSignIn()
       .then((result) => {
-        notify();
+        const user = result.user;
+        console.log(user);
+        const userProfile = {
+          email: user.email,
+          name: user.displayName,
+          bids: [],
+        };
+
+        // save user info in DB
+        fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your account has been created",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+
+        // notify();
         navigate("/");
       })
       .catch((error) => {
@@ -139,7 +168,34 @@ const SignUp = () => {
             console.log("error profile update");
           });
 
-        notify();
+        const userProfile = {
+          email: user.email,
+          name: userName,
+          bids: [],
+        };
+
+        // save user info in DB
+        fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your account has been created",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+
+        // notify();
         navigate("/");
       })
       .catch((err) => {
@@ -291,7 +347,7 @@ const SignUp = () => {
           onClick={handleGoogleSignIn}
           className="bg-white hover:bg-gray-200 text-slate-600 border border-gray-300 font-bold py-2 px-4 rounded  flex items-center gap-2 w-fit mx-auto mt-7"
         >
-          <FcGoogle size={24} /> Sign in with Google
+          <FcGoogle size={24} /> Sign up with Google
         </button>
       </div>
     </div>

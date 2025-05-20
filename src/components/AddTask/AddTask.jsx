@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
 import useAuth from "../../context/AuthContext/AuthContext";
+import Loading from "../Loading/Loading";
 
 const AddTask = () => {
   const { user } = useAuth();
@@ -9,11 +12,23 @@ const AddTask = () => {
     title: "",
     category: "Web Development",
     description: "",
-    deadline: "",
+    deadline: new Date(),
     budget: "",
     userEmail: user?.email || "",
     userName: user?.displayName || "",
   });
+
+  useEffect(() => {
+    setTaskData({
+      title: "",
+      category: "Web Development",
+      description: "",
+      deadline: new Date(),
+      budget: "",
+      userEmail: user?.email || "",
+      userName: user?.displayName || "",
+    });
+  }, [user]);
 
   const categories = [
     "Web Development",
@@ -30,13 +45,49 @@ const AddTask = () => {
     const { name, value } = e.target;
     setTaskData((prev) => ({ ...prev, [name]: value }));
   };
+  const handleDateChange = (date) => {
+    setTaskData((prev) => ({ ...prev, deadline: date }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can send taskData to your backend or Firebase here
-    console.log("Task submitted:", taskData);
-    toast.success("Task posted successfully!");
+
+    const finalTask = {
+      ...taskData,
+      userUid: user?.uid,
+      postedAt: new Date(),
+    };
+
+    fetch("http://localhost:3000/add-task", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(finalTask),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          console.log("Task submitted:", finalTask);
+          toast.success("Task posted successfully!");
+
+          setTaskData({
+            title: "",
+            category: "Web Development",
+            description: "",
+            deadline: new Date(),
+            budget: "",
+            userEmail: user?.email || "",
+            userName: user?.displayName || "",
+          });
+        }
+      });
   };
+
+  if (!user) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="min-h-screen bg-[#EFE3C2] py-10 px-4">
@@ -101,18 +152,34 @@ const AddTask = () => {
           </div>
 
           {/* Deadline */}
+
           <div>
             <label className="block text-sm font-medium text-[#123524] mb-1">
               Deadline
             </label>
-            <input
-              type="date"
-              name="deadline"
-              value={taskData.deadline}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#85A947] bg-white text-[#123524]"
-            />
+            <div className="relative">
+              <DatePicker
+                selected={taskData.deadline}
+                onChange={handleDateChange}
+                minDate={new Date()} // Optional: prevent past dates
+                dateFormat="yyyy-MM-dd"
+                className="w-full px-4 py-2 border border-[#3E7B27]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#85A947] bg-white text-[#123524]"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 absolute right-3 top-2.5 text-[#85A947]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
           </div>
 
           {/* Budget */}
