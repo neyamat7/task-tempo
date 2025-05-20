@@ -132,8 +132,11 @@ const MyPostedTasksTable = () => {
                         {task.budget}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-[#123524]">
-                        <span className="badge badge-sm bg-[#85A947]/20 text-[#85A947]">
-                          {task.bids} bid{task.bids !== 1 ? "s" : ""}
+                        <span className="badge badge-sm bg-[#85A947]/20 text-[#3b4c1d] text-base p-3 min-w-[70px]">
+                          {task.bids.length} bid
+                          {task.bids.length !== 1 && task.bids.length > 0
+                            ? "s"
+                            : ""}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right space-x-2">

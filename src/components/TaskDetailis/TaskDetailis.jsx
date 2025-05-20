@@ -4,10 +4,16 @@ import useAuth from "../../context/AuthContext/AuthContext";
 
 const TaskDetails = () => {
   const { bids, user, setBids } = useAuth();
+
   const { taskId } = useParams();
   const [task, setTask] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [bidsCount, setBidsCount] = useState(bids);
+
+  const [currentBids, setCurrentBids] = useState([]);
+
+  useEffect(() => {
+    setCurrentBids(bids);
+  }, [user, bids]);
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -26,14 +32,36 @@ const TaskDetails = () => {
     };
 
     fetchTask();
+  }, [taskId]);
 
-    setBidsCount(bids);
-  }, [taskId, bids]);
+  function updateTaskBids(taskId) {
+    if (task.bids.includes(user.uid)) {
+      return;
+    }
 
+    const addNewBids = [...task.bids, user.uid];
+    const newAddedBids = {
+      bids: addNewBids,
+    };
+
+    fetch(`http://localhost:3000/tasks/${taskId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newAddedBids),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        throw new Error("update bids on task failed");
+      });
+  }
 
   const handleBidClick = (taskId) => {
-    console.log(taskId);
-    if (bids.includes(taskId)) {
+    if (bids.length && bids.includes(taskId)) {
       alert("you already have bid this task");
       return;
     }
@@ -53,8 +81,8 @@ const TaskDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        updateTaskBids(taskId);
         setBids(updatedBids);
-        console.log(data);
       });
 
     alert("Your bid has been placed!");
@@ -71,13 +99,13 @@ const TaskDetails = () => {
   return (
     <section className="pb-12 pt-5 bg-[#EFE3C2] min-h-screen">
       {/* Top Banner */}
-      {bids.length > 0 && (
+      {currentBids.length > 0 && (
         <div className="px-5 md:px-2  max-w-[992px] mx-auto mb-2">
           <div className="bg-[#3E7B27] text-white py-3 text-center max-w-[992px] mx-auto rounded-lg">
             <p className="text-sm md:text-base">
-              You bid for <span className="font-bold">{bidsCount.length}</span>{" "}
-              opportunity
-              {bidsCount !== 1 ? "s" : ""}
+              You bid for{" "}
+              <span className="font-bold">{currentBids.length}</span> opportunit
+              {currentBids.length !== 1 ? "ies" : "y"}
             </p>
           </div>
         </div>

@@ -17,7 +17,7 @@ const provider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [bids, setBids] = useState(0);
+  const [bids, setBids] = useState([]);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -58,19 +58,17 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
 
-      fetch(`http://localhost:3000/users/${currentUser.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setBids(data.bids);
-        })
-        .catch((err) => {
-          throw new Error("failed to get the updated user info");
-        });
-
+      if (currentUser) {
+        fetch(`http://localhost:3000/users/${currentUser.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setBids(data.bids || []);
+          });
+      } else {
+        setBids([]);
+      }
       setLoading(false);
     });
 

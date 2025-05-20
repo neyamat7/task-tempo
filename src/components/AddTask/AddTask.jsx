@@ -27,6 +27,7 @@ const AddTask = () => {
       budget: "",
       userEmail: user?.email || "",
       userName: user?.displayName || "",
+      bids: [],
     });
   }, [user]);
 
@@ -80,6 +81,7 @@ const AddTask = () => {
             budget: "",
             userEmail: user?.email || "",
             userName: user?.displayName || "",
+            bids: [],
           });
         }
       });
