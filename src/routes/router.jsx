@@ -11,6 +11,7 @@ import MyPostedTask from "../components/MyPostedTask/MyPostedTask";
 import SignUp from "../components/SignUp/SignUp";
 import TaskDetails from "../components/TaskDetailis/TaskDetailis";
 import UpdateTask from "../components/UpdateTask/UpdateTask";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "add-task",
-        element: <AddTask></AddTask>,
+        element: (
+          <PrivateRoutes>
+            <AddTask></AddTask>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "browse-task",
@@ -44,18 +49,30 @@ export const router = createBrowserRouter([
       },
       {
         path: "my-tasks",
-        element: <MyPostedTask></MyPostedTask>,
+        element: (
+          <PrivateRoutes>
+            <MyPostedTask></MyPostedTask>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "details/:taskId",
-        element: <TaskDetails></TaskDetails>,
+        element: (
+          <PrivateRoutes>
+            <TaskDetails></TaskDetails>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "update/:taskId",
         loader: ({ params }) =>
           fetch(`https://task-tempo.vercel.app/tasks/${params.taskId}`),
         hydrateFallbackElement: <Loading></Loading>,
-        element: <UpdateTask></UpdateTask>,
+        element: (
+          <PrivateRoutes>
+            <UpdateTask></UpdateTask>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
