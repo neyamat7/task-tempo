@@ -82,7 +82,7 @@ const Header = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `btn bg-gray-50 text-lg md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+          `btn bg-gray-50 text-base md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
             isActive ? "underline font-medium" : "font-normal"
           } ${darkMode ? "text-gray-200" : "text-gray-800"}`
         }
@@ -92,7 +92,7 @@ const Header = () => {
       <NavLink
         to="/add-task"
         className={({ isActive }) =>
-          `btn bg-gray-50 text-lg md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+          `btn bg-gray-50 text-base md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
             isActive ? "underline font-medium" : "font-normal"
           } ${darkMode ? "text-gray-200" : "text-gray-800"}`
         }
@@ -102,7 +102,7 @@ const Header = () => {
       <NavLink
         to="/browse-task"
         className={({ isActive }) =>
-          `btn bg-gray-50 text-lg font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+          `btn bg-gray-50 text-base font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
             isActive ? "underline font-medium" : "font-normal"
           } ${darkMode ? "text-gray-200" : "text-gray-800"}`
         }
@@ -113,7 +113,7 @@ const Header = () => {
       <NavLink
         to="/my-tasks"
         className={({ isActive }) =>
-          `btn bg-gray-50 text-lg font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+          `btn bg-gray-50 text-base font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
             isActive ? "underline font-medium" : "font-normal"
           } ${darkMode ? "text-gray-200" : "text-gray-800"}`
         }
@@ -290,87 +290,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// {/* <div className="bg-[#123524] shadow-md">
-//       <div className="navbar max-w-screen-xl mx-auto w-full flex justify-between pr-4">
-//         <div className="flex items-center">
-//           <div className="dropdown sm:hidden">
-//             <div
-//               tabIndex={0}
-//               role="button"
-//               className="btn btn-ghost btn-circle hover:bg-[#85A947]/20"
-//             >
-//               <HamburgerIcon />
-//             </div>
-//             <ul
-//               tabIndex={0}
-//               className="menu menu-sm dropdown-content bg-[#EFE3C2] rounded-box z-10 mt-3 w-52 p-2 shadow space-y-3 border border-[#85A947]/30"
-//             >
-//               {navLinks}
-//               {buttonLinks}
-//             </ul>
-//           </div>
-//           <Link to="/" className="font-bold text-2xl text-[#85A947] sm:pl-2">
-//             Freelance Market
-//           </Link>
-//         </div>
-
-//         <div className="hidden sm:flex gap-4 text-lg text-[#EFE3C2]">
-//           {navLinks}
-//         </div>
-
-//         <div className="flex items-center gap-2">
-//           {/* Theme Toggle Button */}
-//           <button
-//             onClick={toggleTheme}
-//             className="btn btn-ghost btn-circle hover:bg-[#85A947]/20 transition-colors"
-//             aria-label="Toggle Theme"
-//           >
-//             {theme === "light" ? <DarkIcon /> : <LightIcon />}
-//           </button>
-
-//           {!user && <div className="hidden sm:flex gap-3">{buttonLinks}</div>}
-
-//           {user && (
-//             <div
-//               // onMouseEnter={handleMouseEnter}
-//               // onMouseLeave={handleMouseLeave}
-//               className="dropdown dropdown-end dropdown-hover"
-//             >
-//               <div
-//                 tabIndex={0}
-//                 role="button"
-//                 className="btn btn-ghost btn-circle avatar hover:scale-105 transition-transform"
-//               >
-//                 <div className="w-10 rounded-full border border-[#85A947]">
-//                   <img
-//                     alt="Tailwind CSS Navbar component"
-//                     src={user.photoURL}
-//                   />
-//                 </div>
-//               </div>
-//               <ul
-//                 tabIndex={0}
-//                 className="menu menu-sm dropdown-content bg-[#EFE3C2] rounded-box z-10 mt-0 w-fit p-2 shadow border border-[#3E7B27]/30"
-//               >
-//                 <li>
-//                   <div className="flex flex-col items-start gap-0 px-2 py-1">
-//                     <p className="text-lg text-[#123524]">{user.displayName}</p>
-//                     <p className="text-sm text-[#3E7B27]">{userEmail}</p>
-//                   </div>
-//                 </li>
-
-//                 <li>
-//                   <a
-//                     className="text-[#123524] hover:bg-[#85A947]/20 transition-colors"
-//                     onClick={handleLogOut}
-//                   >
-//                     Log out
-//                   </a>
-//                 </li>
-//               </ul>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     </div> */}
