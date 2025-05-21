@@ -1,54 +1,9 @@
 import { FaCheck } from "react-icons/fa";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import { plans } from "../../data/plansData";
 
 export default function Plans() {
   const { darkMode } = useTheme();
-
-  const plans = [
-    {
-      name: "Basic",
-      price: "Free",
-      features: [
-        "Post up to 3 tasks per month",
-        "Bid on up to 10 tasks per month",
-        "Standard support",
-        "Basic profile",
-      ],
-      cta: "Get Started",
-      popular: false,
-    },
-    {
-      name: "Pro",
-      price: "$19.99",
-      period: "per month",
-      features: [
-        "Post unlimited tasks",
-        "Bid on up to 50 tasks per month",
-        "Priority support",
-        "Featured profile",
-        "Early access to new tasks",
-        "Reduced platform fees",
-      ],
-      cta: "Go Pro",
-      popular: true,
-    },
-    {
-      name: "Business",
-      price: "$49.99",
-      period: "per month",
-      features: [
-        "Post unlimited tasks",
-        "Unlimited bidding",
-        "24/7 premium support",
-        "Verified business profile",
-        "Dedicated account manager",
-        "Custom contracts",
-        "Lowest platform fees",
-      ],
-      cta: "Contact Sales",
-      popular: false,
-    },
-  ];
 
   return (
     <section className={`py-20 ${darkMode ? "bg-[#2B2B2B]" : "bg-gray-50"}`}>
@@ -88,50 +43,52 @@ export default function Plans() {
                 </div>
               )}
 
-              <div className="p-8">
-                <h3
-                  className={`text-2xl font-bold ${
-                    darkMode ? "text-white" : "text-[#362222]"
-                  } mb-4`}
-                >
-                  {plan.name}
-                </h3>
-                <div className="mb-6">
-                  <span
-                    className={`text-4xl font-bold ${
+              <div className="p-8 flex flex-col justify-between h-full">
+                <div>
+                  <h3
+                    className={`text-2xl font-bold ${
                       darkMode ? "text-white" : "text-[#362222]"
-                    }`}
+                    } mb-4`}
                   >
-                    {plan.price}
-                  </span>
-                  {plan.period && (
+                    {plan.name}
+                  </h3>
+                  <div className="mb-6">
                     <span
-                      className={`${
-                        darkMode ? "text-gray-400" : "text-gray-500"
-                      } ml-2`}
+                      className={`text-4xl font-bold ${
+                        darkMode ? "text-white" : "text-[#362222]"
+                      }`}
                     >
-                      {plan.period}
+                      {plan.price}
                     </span>
-                  )}
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center">
-                      <FaCheck className="text-[#362222] mr-3 flex-shrink-0" />
+                    {plan.period && (
                       <span
                         className={`${
-                          darkMode ? "text-gray-300" : "text-gray-600"
-                        }`}
+                          darkMode ? "text-gray-400" : "text-gray-500"
+                        } ml-2`}
                       >
-                        {feature}
+                        {plan.period}
                       </span>
-                    </li>
-                  ))}
-                </ul>
+                    )}
+                  </div>
+
+                  <ul className="space-y-4 mb-8">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-center">
+                        <FaCheck className="text-[#362222] mr-3 flex-shrink-0" />
+                        <span
+                          className={`${
+                            darkMode ? "text-gray-300" : "text-gray-600"
+                          }`}
+                        >
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
                 <button
-                  className={`w-full py-4 rounded-lg transition-colors font-medium ${
+                  className={`mb-6 w-full py-4 rounded-lg transition-colors font-medium ${
                     plan.popular
                       ? "bg-[#362222] hover:bg-[#423F3E] text-white"
                       : `${

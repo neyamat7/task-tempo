@@ -4,6 +4,7 @@ import {
   FaMoneyBillWave,
   FaUserCheck,
 } from "react-icons/fa";
+import { Link } from "react-router";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
 
 export default function Services() {
@@ -124,9 +125,12 @@ export default function Services() {
         </div>
 
         <div className="text-center mt-16">
-          <button className="px-8 py-4 bg-[#362222] hover:bg-[#423F3E] text-white rounded-lg transition-colors font-medium shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <Link
+            to="/add-task"
+            className="px-8 py-4 bg-[#362222] hover:bg-[#423F3E] text-white rounded-lg  font-medium shadow-lg transform hover:scale-105 transition-transform duration-300"
+          >
             Get Started Now
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,36 +1,11 @@
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import { testimonials } from "../../data/testimonialsData";
 
 export default function Testimonials() {
   const { darkMode } = useTheme();
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Graphic Designer",
-      image: "/placeholder.svg?height=80&width=80",
-      quote:
-        "TaskMarket has completely changed how I find work. The bidding process is transparent, and I've been able to build long-term relationships with clients.",
-      rating: 5,
-    },
-    {
-      name: "Michael Chen",
-      role: "Business Owner",
-      image: "/placeholder.svg?height=80&width=80",
-      quote:
-        "As a small business owner, I needed help with various tasks but couldn't afford full-time employees. TaskMarket lets me find skilled professionals for specific projects.",
-      rating: 5,
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Web Developer",
-      image: "/placeholder.svg?height=80&width=80",
-      quote:
-        "The platform is intuitive and the escrow payment system gives me peace of mind. I know I'll get paid for my work, and clients know they only pay for quality results.",
-      rating: 4,
-    },
-  ];
 
   return (
     <section className={`py-20 ${darkMode ? "bg-[#171010]" : "bg-white"}`}>
@@ -52,7 +27,7 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
@@ -60,7 +35,7 @@ export default function Testimonials() {
                 darkMode ? "bg-[#2B2B2B]" : "bg-gray-50"
               } p-8 rounded-xl shadow-lg relative transform hover:-translate-y-2 transition-transform duration-300`}
             >
-              <div className="absolute -top-4 -left-4 w-12 h-12 flex items-center justify-center bg-[#362222] text-white rounded-full">
+              <div className="absolute -top-4 -left-2 w-12 h-12 flex items-center justify-center bg-[#362222] text-white rounded-full">
                 <FaQuoteLeft />
               </div>
 
@@ -136,12 +111,18 @@ export default function Testimonials() {
             Join our community of freelancers and clients today
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="px-8 py-4 bg-white text-[#362222] hover:bg-gray-100 rounded-lg transition-colors font-medium shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <Link
+              to="/add-task"
+              className="px-8 py-4 bg-white text-[#362222] hover:bg-gray-100 rounded-lg   font-medium shadow-lg transform hover:scale-105 transition-transform duration-300"
+            >
               Post a Task
-            </button>
-            <button className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-[#362222] rounded-lg transition-colors font-medium shadow-lg transform hover:scale-105 transition-transform duration-300">
+            </Link>
+            <Link
+              to="/browse-task"
+              className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-[#362222] rounded-lg  font-medium shadow-lg transform hover:scale-105 transition-transform duration-300"
+            >
               Find Work
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import { categories } from "../../data/taskCategories";
 import Loading from "../Loading/Loading";
 
 const AddTask = () => {
   const { user } = useAuth();
   const { darkMode } = useTheme();
+  const navigate = useNavigate();
 
   const [taskData, setTaskData] = useState({
     title: "",
@@ -32,17 +35,6 @@ const AddTask = () => {
       bids: [],
     });
   }, [user]);
-
-  const categories = [
-    "Web Development",
-    "Design",
-    "Writing",
-    "Marketing",
-    "Video Editing",
-    "SEO",
-    "Graphic Design",
-    "Copywriting",
-  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,9 +62,7 @@ const AddTask = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
-          console.log("Task submitted:", finalTask);
           toast.success("Task posted successfully!");
 
           setTaskData({
@@ -85,7 +75,12 @@ const AddTask = () => {
             userName: user?.displayName || "",
             bids: [],
           });
+
+          navigate("/browse-task");
         }
+      })
+      .catch((err) => {
+        console.error("failed to add new task", err);
       });
   };
 
@@ -94,9 +89,9 @@ const AddTask = () => {
   }
 
   return (
-   <div
+    <div
       className={`min-h-screen py-12 px-4 ${
-        darkMode ? "bg-[#221a1a]" : "bg-[#EFE3C2]"
+        darkMode ? "bg-[#221a1a]" : "bg-gray-200"
       }`}
     >
       <div
@@ -106,7 +101,6 @@ const AddTask = () => {
             : "bg-white border border-gray-200"
         }`}
       >
-        {/* Form Header */}
         <div
           className={`px-6 py-8 ${darkMode ? "bg-[#362222]" : "bg-gray-50"}`}
         >
@@ -126,10 +120,8 @@ const AddTask = () => {
           </p>
         </div>
 
-        {/* Form Body */}
         <div className="p-6 md:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Task Title */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -153,7 +145,6 @@ const AddTask = () => {
               />
             </div>
 
-            {/* Category */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -199,7 +190,6 @@ const AddTask = () => {
               </div>
             </div>
 
-            {/* Description */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -223,7 +213,6 @@ const AddTask = () => {
               ></textarea>
             </div>
 
-            {/* Deadline */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -265,7 +254,6 @@ const AddTask = () => {
               </div>
             </div>
 
-            {/* Budget */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -301,7 +289,6 @@ const AddTask = () => {
               </div>
             </div>
 
-            {/* Read Only Fields Section */}
             <div
               className={`mt-8 p-4 rounded-lg ${
                 darkMode ? "bg-[#362222]/30" : "bg-gray-50"
@@ -315,7 +302,6 @@ const AddTask = () => {
                 Your Information
               </h3>
 
-              {/* Read Only - User Email */}
               <div className="mb-4">
                 <label
                   className={`block text-xs font-medium mb-1 ${
@@ -337,7 +323,6 @@ const AddTask = () => {
                 />
               </div>
 
-              {/* Read Only - User Name */}
               <div>
                 <label
                   className={`block text-xs font-medium mb-1 ${
@@ -360,7 +345,6 @@ const AddTask = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="mt-8">
               <button
                 type="submit"
@@ -381,5 +365,3 @@ const AddTask = () => {
 };
 
 export default AddTask;
-
- 

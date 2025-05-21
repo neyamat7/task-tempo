@@ -157,12 +157,10 @@ const Header = () => {
     </>
   );
 
+  //sticky top-0 z-50
+
   return (
-    <div
-      className={`sticky top-0 z-50 shadow-md ${
-        darkMode ? "bg-[#332a2a]" : "bg-gray-50"
-      }`}
-    >
+    <div className={`shadow-md ${darkMode ? "bg-[#332a2a]" : "bg-gray-50"}`}>
       <div className="navbar max-w-screen-xl mx-auto w-full flex justify-between pr-4">
         <div className="flex items-center">
           <div className={`dropdown ${user ? "md:hidden" : "lg:hidden"}`}>
@@ -195,7 +193,7 @@ const Header = () => {
               darkMode ? "text-gray-200" : "text-gray-800"
             }`}
           >
-            Freelance Market
+            TaskTempo
           </Link>
         </div>
 
@@ -208,7 +206,6 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
             className={`btn btn-sm btn-ghost btn-circle transition-colors ${
@@ -268,9 +265,9 @@ const Header = () => {
                   </div>
                 </li>
 
-                <li>
+                <li className="mt-4">
                   <a
-                    className={`transition-colors ${
+                    className={`border border-gray-200 flex justify-center transition-colors text-lg ${
                       darkMode
                         ? "text-gray-200 hover:bg-[#362222]"
                         : "text-gray-800 hover:bg-gray-100"

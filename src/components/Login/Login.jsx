@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
- 
+
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
- 
 
 const Login = () => {
-
-  const  {darkMode} = useTheme()
+  const { darkMode } = useTheme();
 
   const { signInUser, googleSignIn, setLoading } = useAuth();
   const location = useLocation();
@@ -38,12 +36,12 @@ const Login = () => {
     e.preventDefault();
 
     signInUser(email, password)
-      .then((res) => { 
+      .then((res) => {
         notify();
         navigate(location?.state || "/");
       })
       .catch((err) => {
-        console.log(err.message);
+        console.error(err.message);
         setLoading(false);
         setError(err?.message);
       });
@@ -51,7 +49,7 @@ const Login = () => {
 
   function handleGoogleSignIn() {
     googleSignIn()
-      .then((result) => { 
+      .then((result) => {
         notify();
         navigate(location?.state || "/");
       })
@@ -63,7 +61,7 @@ const Login = () => {
   return (
     <div
       className={`flex flex-col items-center justify-center min-h-[calc(100vh-409px)] ${
-        darkMode ? "bg-[#241d1d]" : "bg-[#EFE3C2]"
+        darkMode ? "bg-[#241d1d]" : "bg-gray-200"
       }`}
     >
       <div className={`my-10 md:my-20 w-full max-w-md px-4 sm:px-0`}>
@@ -72,7 +70,6 @@ const Login = () => {
             darkMode ? "bg-[#2B2B2B] border border-[#423F3E]/30" : "bg-white"
           }`}
         >
-          {/* Form Header */}
           <div
             className={`px-6 py-6 ${darkMode ? "bg-[#362222]" : "bg-white"}`}
           >
@@ -92,10 +89,8 @@ const Login = () => {
             </p>
           </div>
 
-          {/* Form Body */}
           <form className="px-6 sm:px-8 py-8">
             <div className="space-y-6">
-              {/* Email Field */}
               <div>
                 <label
                   className={`block text-sm font-medium mb-1.5 ${
@@ -113,7 +108,7 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className={`w-full px-4 py-2.5 rounded-lg border ${
                     darkMode
-                      ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                      ? "bg-[#171010] border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
                       : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                   } focus:outline-none focus:ring-2`}
                   placeholder="Your Email"
@@ -121,7 +116,6 @@ const Login = () => {
                 />
               </div>
 
-              {/* Password Field */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label
@@ -173,7 +167,6 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Error Message */}
               {error && (
                 <div
                   className={`py-2 px-3 rounded-md ${
@@ -190,7 +183,6 @@ const Login = () => {
                 </div>
               )}
 
-              {/* Sign In Button */}
               <button
                 onClick={handleSignInWithPassword}
                 type="submit"
@@ -203,7 +195,6 @@ const Login = () => {
                 Sign In
               </button>
 
-              {/* Divider */}
               <div className="relative flex items-center py-2">
                 <div
                   className={`flex-grow border-t ${
@@ -224,7 +215,6 @@ const Login = () => {
                 ></div>
               </div>
 
-              {/* Google Sign In */}
               <button
                 onClick={handleGoogleSignIn}
                 type="button"
@@ -240,7 +230,6 @@ const Login = () => {
             </div>
           </form>
 
-          {/* Register Link */}
           <div
             className={`px-6 sm:px-8 py-4 text-center border-t ${
               darkMode
@@ -274,8 +263,8 @@ const Login = () => {
 
 export default Login;
 
-
-{/* <div className="flex flex-col items-center justify-center bg-gray-100 min-h-[calc(100vh-409px)]">
+{
+  /* <div className="flex flex-col items-center justify-center bg-gray-100 min-h-[calc(100vh-409px)]">
       <div className="bg-white shadow-md my-20 py-6 rounded-md">
         <form className="px-6 sm:px-8 pb-8 mb-4 w-[280px] min-[390px]:w-[350px] sm:w-[400px]">
           <h1 className="text-3xl text-center font-bold mb-10">Login</h1>
@@ -364,4 +353,5 @@ export default Login;
           </button>
         </div>
       </div>
-    </div> */}
+    </div> */
+}

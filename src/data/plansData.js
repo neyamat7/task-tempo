@@ -1,0 +1,45 @@
+export const plans = [
+  {
+    name: "Basic",
+    price: "Free",
+    features: [
+      "Post up to 3 tasks per month",
+      "Bid on up to 10 tasks per month",
+      "Standard support",
+      "Basic profile",
+    ],
+    cta: "Get Started",
+    popular: false,
+  },
+  {
+    name: "Pro",
+    price: "$19.99",
+    period: "per month",
+    features: [
+      "Post unlimited tasks",
+      "Bid on up to 50 tasks per month",
+      "Priority support",
+      "Featured profile",
+      "Early access to new tasks",
+      "Reduced platform fees",
+    ],
+    cta: "Go Pro",
+    popular: true,
+  },
+  {
+    name: "Business",
+    price: "$49.99",
+    period: "per month",
+    features: [
+      "Post unlimited tasks",
+      "Unlimited bidding",
+      "24/7 premium support",
+      "Verified business profile",
+      "Dedicated account manager",
+      "Custom contracts",
+      "Lowest platform fees",
+    ],
+    cta: "Contact Sales",
+    popular: false,
+  },
+];

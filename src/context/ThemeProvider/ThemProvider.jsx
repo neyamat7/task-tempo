@@ -1,5 +1,5 @@
 // ThemeContext.jsx
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext({
   darkMode: false,
@@ -9,7 +9,6 @@ export const ThemeContext = createContext({
 export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
 
-  // Check localStorage or system preference on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
@@ -46,4 +45,4 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-export const useTheme = () => React.useContext(ThemeContext);
+export const useTheme = () => useContext(ThemeContext);

@@ -4,13 +4,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import { categories } from "../../data/taskCategories";
 import Loading from "../Loading/Loading";
 
 const UpdateTask = () => {
   const { darkMode } = useTheme();
 
   const navigate = useNavigate();
-  // const tasktoUpdate = useLoaderData();
+
   const [task, setTask] = useState({});
   const { taskId } = useParams();
   const [loading, setLoading] = useState(true);
@@ -29,17 +30,6 @@ const UpdateTask = () => {
       });
   }, [taskId]);
 
-  const categories = [
-    "Web Development",
-    "Design",
-    "Writing",
-    "Marketing",
-    "Video Editing",
-    "SEO",
-    "Graphic Design",
-    "Copywriting",
-  ];
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTask((prev) => ({ ...prev, [name]: value }));
@@ -51,7 +41,6 @@ const UpdateTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { _id, ...updatedData } = task;
-    console.log(updatedData);
 
     const updatedTaskData = updatedData;
 
@@ -84,7 +73,7 @@ const UpdateTask = () => {
   return (
     <section
       className={`py-12 px-4 min-h-screen ${
-        darkMode ? "bg-[#221a1a]" : "bg-[#EFE3C2]"
+        darkMode ? "bg-[#221a1a]" : "bg-gray-200"
       }`}
     >
       <div className="max-w-3xl mx-auto">
@@ -93,7 +82,6 @@ const UpdateTask = () => {
             darkMode ? "bg-[#2B2B2B] border border-[#423F3E]/30" : "bg-white"
           }`}
         >
-          {/* Form Header */}
           <div
             className={`px-6 py-8 ${darkMode ? "bg-[#362222]" : "bg-white"}`}
           >
@@ -113,9 +101,7 @@ const UpdateTask = () => {
             </p>
           </div>
 
-          {/* Form Body */}
           <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
-            {/* Task Title */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -139,7 +125,6 @@ const UpdateTask = () => {
               />
             </div>
 
-            {/* Category */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -186,7 +171,6 @@ const UpdateTask = () => {
               </div>
             </div>
 
-            {/* Description */}
             <div>
               <label
                 className={`block text-sm font-medium mb-1.5 ${
@@ -210,9 +194,7 @@ const UpdateTask = () => {
               ></textarea>
             </div>
 
-            {/* Two Column Layout for Deadline and Budget */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Deadline */}
               <div>
                 <label
                   className={`block text-sm font-medium mb-1.5 ${
@@ -254,7 +236,6 @@ const UpdateTask = () => {
                 </div>
               </div>
 
-              {/* Budget */}
               <div>
                 <label
                   className={`block text-sm font-medium mb-1.5 ${
@@ -291,7 +272,6 @@ const UpdateTask = () => {
               </div>
             </div>
 
-            {/* User Information Section */}
             <div
               className={`mt-8 p-4 rounded-lg ${
                 darkMode ? "bg-[#362222]/30" : "bg-gray-50"
@@ -306,7 +286,6 @@ const UpdateTask = () => {
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* User Email (Read Only) */}
                 <div>
                   <label
                     className={`block text-xs font-medium mb-1 ${
@@ -328,7 +307,6 @@ const UpdateTask = () => {
                   />
                 </div>
 
-                {/* User Name (Read Only) */}
                 <div>
                   <label
                     className={`block text-xs font-medium mb-1 ${
@@ -352,7 +330,6 @@ const UpdateTask = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 type="submit"
@@ -384,5 +361,3 @@ const UpdateTask = () => {
 };
 
 export default UpdateTask;
-
- 

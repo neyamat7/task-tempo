@@ -9,8 +9,7 @@ import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
 
 const SignUp = () => {
-
-const  {darkMode} = useTheme()
+  const { darkMode } = useTheme();
 
   const navigate = useNavigate();
 
@@ -28,10 +27,7 @@ const  {darkMode} = useTheme()
   const [emailError, setEmailError] = useState("");
   const [photoError, setPhotoError] = useState("");
 
-  // const notify = () =>
-  //   toast.success(
-  //     "Your registration is complete. Welcome to seamless bill payments!"
-  //   );
+ 
 
   const { createUser, setUser, updateUser, googleSignIn } = useAuth();
 
@@ -67,11 +63,11 @@ const  {darkMode} = useTheme()
             }
           });
 
-        // notify();
+       
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }
 
@@ -209,9 +205,9 @@ const  {darkMode} = useTheme()
   }
 
   return (
-     <div
+    <div
       className={`min-h-[calc(100vh-409px)] px-4 py-10 ${
-        darkMode ? "bg-[#1d1818]" : "bg-[#EFE3C2]"
+        darkMode ? "bg-[#1d1818]" : "bg-gray-200"
       }`}
     >
       <div className="max-w-md mx-auto">
@@ -220,7 +216,7 @@ const  {darkMode} = useTheme()
             darkMode ? "bg-[#2B2B2B] border border-[#423F3E]/30" : "bg-white"
           }`}
         >
-          {/* Form Header */}
+      
           <div
             className={`px-6 py-6 ${darkMode ? "bg-[#362222]" : "bg-white"}`}
           >
@@ -240,12 +236,12 @@ const  {darkMode} = useTheme()
             </p>
           </div>
 
-          {/* Form Body */}
+    
           <form
             onSubmit={handleRegister}
             className="px-6 sm:px-8 py-8 space-y-5"
           >
-            {/* Name Field */}
+        
             <div>
               <label
                 htmlFor="name"
@@ -266,7 +262,7 @@ const  {darkMode} = useTheme()
                 }}
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   darkMode
-                    ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                    ? "bg-[#171010] border-[#423F3E] text-gray-200  focus:ring-[#423F3E] focus:border-[#423F3E]"
                     : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                 } focus:outline-none focus:ring-2`}
                 placeholder="Enter your full name"
@@ -282,7 +278,7 @@ const  {darkMode} = useTheme()
               )}
             </div>
 
-            {/* Email Field */}
+       
             <div>
               <label
                 htmlFor="email"
@@ -318,8 +314,7 @@ const  {darkMode} = useTheme()
                 </p>
               )}
             </div>
-
-            {/* Password Field */}
+ 
             <div>
               <label
                 htmlFor="password"
@@ -368,7 +363,7 @@ const  {darkMode} = useTheme()
               )}
             </div>
 
-            {/* Photo URL Field */}
+          
             <div>
               <label
                 htmlFor="photo"
@@ -405,7 +400,7 @@ const  {darkMode} = useTheme()
               )}
             </div>
 
-            {/* Terms Checkbox */}
+         
             <div
               className={`flex items-center ${
                 darkMode ? "text-gray-300" : "text-gray-700"
@@ -438,7 +433,7 @@ const  {darkMode} = useTheme()
               </label>
             </div>
 
-            {/* Error Message */}
+         
             {error && (
               <div
                 className={`py-2 px-3 rounded-md ${
@@ -455,7 +450,7 @@ const  {darkMode} = useTheme()
               </div>
             )}
 
-            {/* Register Button */}
+          
             <button
               type="submit"
               className={`w-full py-2.5 px-4 rounded-lg font-medium transition-all transform hover:scale-[1.01] ${
@@ -467,7 +462,7 @@ const  {darkMode} = useTheme()
               Create Account
             </button>
 
-            {/* Login Link */}
+        
             <div className="text-center">
               <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
                 Already have an account?{" "}
@@ -484,7 +479,7 @@ const  {darkMode} = useTheme()
               </p>
             </div>
 
-            {/* Divider */}
+           
             <div className="relative flex items-center py-2">
               <div
                 className={`flex-grow border-t ${
@@ -505,7 +500,7 @@ const  {darkMode} = useTheme()
               ></div>
             </div>
 
-            {/* Google Sign Up */}
+       
             <button
               type="button"
               onClick={handleGoogleSignIn}
@@ -526,6 +521,3 @@ const  {darkMode} = useTheme()
 };
 
 export default SignUp;
-
-
- 

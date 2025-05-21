@@ -1,28 +1,22 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import Loading from "../Loading/Loading";
 
 const BrowseTasks = () => {
-  
-  const  {darkMode} = useTheme()
-  
+  const { darkMode } = useTheme();
+
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        // Replace this with actual API call
         const res = await fetch("https://task-tempo.vercel.app/tasks");
         const data = await res.json();
 
         setTasks(data);
         setLoading(false);
-        // setTimeout(() => {
-        //   setTasks(data);
-        //   setLoading(false);
-        // }, 800);
       } catch (error) {
         console.error("Error fetching tasks:", error);
         setLoading(false);
@@ -32,22 +26,14 @@ const BrowseTasks = () => {
     fetchTasks();
   }, []);
 
-  // const handleViewDetails = (taskId) => {
-  //   navigate(`/details/${taskId}`);
-  // };
-
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <span className="loading loading-spinner loading-lg text-[#85A947]"></span>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (
-   <section
+    <section
       className={`py-10 min-h-screen ${
-        darkMode ? "bg-[#3d3737]" : "bg-[#EFE3C2]"
+        darkMode ? "bg-[#3d3737]" : "bg-gray-200"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4">
@@ -75,16 +61,16 @@ const BrowseTasks = () => {
             No tasks available at the moment.
           </p>
         ) : (
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-2.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
             {tasks.map((task) => (
               <div
                 key={task._id}
-                className={`inline-block w-full mb-2.5 rounded-lg shadow-md hover:shadow-xl transition-shadow ${
+                className={`p-4 flex flex-col justify-between rounded-lg shadow-md hover:shadow-xl transition-shadow ${
                   darkMode ? "bg-[#171010]" : "bg-white"
                 }`}
               >
-                <div className="p-5">
-                  <div className="inline-flex justify-between items-start mb-3">
+                <div>
+                  <div className="flex justify-between items-start mb-3">
                     <span
                       className={`inline-block px-3 py-1 text-xs rounded-md ${
                         darkMode
@@ -113,7 +99,7 @@ const BrowseTasks = () => {
                           d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                         />
                       </svg>
-                      {task._id.slice(-2)} bids
+                      {task.bids.length} bids
                     </span>
                   </div>
 
@@ -183,20 +169,20 @@ const BrowseTasks = () => {
                       })}
                     </span>
                   </div>
-
-                  <Link
-                    to={`/details/${task._id}`}
-                    className={`mt-4 w-full block text-center py-3 rounded ${
-                      darkMode
-                        ? "bg-[#423F3E] hover:bg-[#362222]"
-                        : "bg-gray-200 hover:bg-gray-300"
-                    } transition-colors ${
-                      darkMode ? "text-gray-200" : "text-gray-800"
-                    }`}
-                  >
-                    See Details
-                  </Link>
                 </div>
+
+                <Link
+                  to={`/details/${task._id}`}
+                  className={`mt-4 w-full block text-center py-3 rounded ${
+                    darkMode
+                      ? "bg-[#423F3E] hover:bg-[#362222]"
+                      : "bg-gray-200 hover:bg-gray-300"
+                  } transition-colors ${
+                    darkMode ? "text-gray-200" : "text-gray-800"
+                  }`}
+                >
+                  See Details
+                </Link>
               </div>
             ))}
           </div>
@@ -207,8 +193,3 @@ const BrowseTasks = () => {
 };
 
 export default BrowseTasks;
-
-
-
-
- 

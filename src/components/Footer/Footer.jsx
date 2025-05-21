@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="bg-[#2B2B2B] text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Company Info */}
+      
           <div>
             <h3 className="text-2xl font-bold mb-6">TaskMarket</h3>
             <p className="text-gray-300 mb-6 text-lg">
@@ -49,7 +49,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+       
           <div>
             <h3 className="text-xl font-bold mb-6">Quick Links</h3>
             <ul className="space-y-3">
@@ -110,7 +110,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Categories */}
+      
           <div>
             <h3 className="text-xl font-bold mb-6">Categories</h3>
             <ul className="space-y-3">
@@ -171,7 +171,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+    
           <div>
             <h3 className="text-xl font-bold mb-6">Contact Us</h3>
             <ul className="space-y-4">

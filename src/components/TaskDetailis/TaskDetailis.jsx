@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import Loading from "../Loading/Loading";
 
 const TaskDetails = () => {
-
-  const  {darkMode} = useTheme()
+  const { darkMode } = useTheme();
 
   const { bids, user, setBids } = useAuth();
 
@@ -22,7 +22,9 @@ const TaskDetails = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const res = await fetch(`https://task-tempo.vercel.app/tasks/${taskId}`);
+        const res = await fetch(
+          `https://task-tempo.vercel.app/tasks/${taskId}`
+        );
         const data = await res.json();
 
         setTimeout(() => {
@@ -56,11 +58,8 @@ const TaskDetails = () => {
       body: JSON.stringify(newAddedBids),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      })
       .catch((err) => {
-        throw new Error("update bids on task failed");
+        console.error("update bids on task failed", err);
       });
   }
 
@@ -92,25 +91,20 @@ const TaskDetails = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <span className="loading loading-spinner loading-lg text-[#85A947]"></span>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (
- <section
+    <section
       className={`py-12 min-h-screen ${
-        darkMode ? "bg-[#493e3e]" : "bg-[#EFE3C2]"
+        darkMode ? "bg-[#493e3e]" : "bg-gray-200"
       }`}
     >
-      {/* Top Banner */}
       {currentBids.length > 0 && (
         <div className="px-4 max-w-4xl mx-auto mb-6">
           <div
             className={`${
-              darkMode ? "bg-[#362222]" : "bg-blue-600"
+              darkMode ? "bg-[#362222]" : "bg-gray-400"
             } py-3 px-4 rounded-lg shadow-md`}
           >
             <div className="flex items-center justify-between">
@@ -137,7 +131,7 @@ const TaskDetails = () => {
                 className={`px-3 py-1 text-xs font-medium rounded-full ${
                   darkMode
                     ? "bg-[#423F3E] text-white"
-                    : "bg-blue-700 text-white"
+                    : "bg-gray-500 text-white"
                 }`}
               >
                 Active
@@ -148,13 +142,11 @@ const TaskDetails = () => {
       )}
 
       <div className="max-w-4xl mx-auto px-4">
-        {/* Main Content Card */}
         <div
           className={`rounded-xl shadow-lg overflow-hidden ${
             darkMode ? "bg-[#2B2B2B] text-gray-200" : "bg-white text-gray-800"
           }`}
         >
-          {/* Header Section with Category Badge */}
           <div
             className={`p-6 border-b ${
               darkMode ? "border-gray-700" : "border-gray-200"
@@ -195,7 +187,6 @@ const TaskDetails = () => {
             </div>
           </div>
 
-          {/* Description Section */}
           <div
             className={`p-6 ${
               darkMode ? "border-b border-gray-700" : "border-b border-gray-200"
@@ -217,7 +208,6 @@ const TaskDetails = () => {
             </p>
           </div>
 
-          {/* Timeline Section */}
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div
@@ -296,7 +286,6 @@ const TaskDetails = () => {
             </div>
           </div>
 
-          {/* Action Section */}
           <div className={`p-6 ${darkMode ? "bg-[#171010]" : "bg-gray-50"}`}>
             <button
               onClick={() => handleBidClick(task._id)}
@@ -311,13 +300,12 @@ const TaskDetails = () => {
           </div>
         </div>
 
-        {/* Tips Section */}
         <div
           className={`mt-8 rounded-xl overflow-hidden shadow-lg ${
             darkMode ? "bg-[#2B2B2B]" : "bg-white"
           }`}
         >
-          <div className={`p-4 ${darkMode ? "bg-[#362222]" : "bg-blue-600"}`}>
+          <div className={`p-4 ${darkMode ? "bg-[#362222]" : "bg-gray-400"}`}>
             <h3 className="text-white font-semibold">
               Tips for a Successful Bid
             </h3>
@@ -392,7 +380,3 @@ const TaskDetails = () => {
 };
 
 export default TaskDetails;
-
-
-
- 

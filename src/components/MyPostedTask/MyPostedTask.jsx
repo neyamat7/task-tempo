@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import Loading from "../Loading/Loading";
 
 const MyPostedTasksTable = () => {
   const { darkMode } = useTheme();
@@ -74,15 +75,11 @@ const MyPostedTasksTable = () => {
   }
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <span className="loading loading-spinner loading-lg text-[#85A947]"></span>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (
-    <section className={`py-12 ${darkMode ? "bg-[#4c3f3f]" : "bg-[#EFE3C2]"}`}>
+    <section className={`py-28 ${darkMode ? "bg-[#4c3f3f]" : "bg-gray-200"}`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-10 text-center">
           <h2
@@ -148,7 +145,7 @@ const MyPostedTasksTable = () => {
           </div>
         ) : (
           <>
-            {/* Desktop Table View */}
+     
             <div className="hidden sm:block overflow-hidden rounded-xl shadow-lg">
               <div
                 className={`overflow-x-auto ${
@@ -335,7 +332,7 @@ const MyPostedTasksTable = () => {
               </div>
             </div>
 
-            {/* Mobile Card View */}
+        
             <div className="sm:hidden space-y-4">
               {tasks.map((task) => (
                 <div
@@ -487,5 +484,3 @@ const MyPostedTasksTable = () => {
 };
 
 export default MyPostedTasksTable;
-
- 

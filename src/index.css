@@ -2,8 +2,19 @@
 @plugin "daisyui";
 
 @theme {
-  --color-primary: #85a947;
-  --color-secondary: #3e7b27;
-  --color-tertiary: #123524;
-  --color-lightBg: #efe3c2;
+  --color-primary: #1f4529;
+  --color-secondary: #47663b;
+  --color-accent: #f8f8f5;
+  --color-darker: #2d2d2a;
+  --color-lightBg: #e8ecd7;
+}
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #746f6f inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px #9a9881 inset !important;
+}
+
+.dark input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #171010 inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px #171010 inset !important;
+  -webkit-text-fill-color: #e5e7eb !important;
 }

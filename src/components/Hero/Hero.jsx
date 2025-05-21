@@ -36,14 +36,10 @@ const Hero = () => {
 
   return (
     <div
-      className={`w-full h-[60vh] ${darkMode ? "bg-[#655252]" : "bg-gray-50"}`}
+      className={`w-full h-[70vh] ${darkMode ? "bg-[#655252]" : "bg-gray-50"}`}
     >
       <div className="swiper mySwiper h-full w-full">
-        <div
-          className={`swiper-wrapper h-full ${
-            darkMode ? "text-gray-200" : "text-gray-800"
-          }`}
-        >
+        <div className={`swiper-wrapper h-full`}>
           {slidesData.map((slide) => (
             <SlideItem key={slide.id} slide={slide} />
           ))}
@@ -64,6 +60,8 @@ const Hero = () => {
           }`}
         ></div>
       </div>
+
+      
     </div>
   );
 };
