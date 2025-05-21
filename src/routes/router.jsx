@@ -5,7 +5,6 @@ import BrowseTasks from "../components/BrowseTasks/BrowseTasks";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import ForgetPassword from "../components/ForgetPassword/ForgetPassword";
 import Home from "../components/Home/Home";
-import Loading from "../components/Loading/Loading";
 import Login from "../components/Login/Login";
 import MyPostedTask from "../components/MyPostedTask/MyPostedTask";
 import SignUp from "../components/SignUp/SignUp";
@@ -65,9 +64,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "update/:taskId",
-        loader: ({ params }) =>
-          fetch(`https://task-tempo.vercel.app/tasks/${params.taskId}`),
-        hydrateFallbackElement: <Loading></Loading>,
         element: (
           <PrivateRoutes>
             <UpdateTask></UpdateTask>

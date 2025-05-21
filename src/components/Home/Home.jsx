@@ -1,6 +1,8 @@
 import AboutUs from "../AboutUs/AboutUs";
 import FeaturedSection from "../FeaturedSection/FeaturedSection";
 import Hero from "../Hero/Hero";
+import Plans from "../Plans/Plans";
+import Services from "../Services/Services";
 import Testimonials from "../Testimonials/Testimonials";
 
 export default function Home() {
@@ -8,7 +10,9 @@ export default function Home() {
     <>
       <Hero></Hero>
       <FeaturedSection></FeaturedSection>
-      <AboutUs></AboutUs>
+      <Services></Services>
+      <Plans></Plans>
+      {/* <AboutUs></AboutUs> */}
       <Testimonials></Testimonials>
     </>
   );
