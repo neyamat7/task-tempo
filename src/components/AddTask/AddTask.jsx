@@ -59,7 +59,7 @@ const AddTask = () => {
       postedAt: new Date(),
     };
 
-    fetch("https://freelance-task-deploy-server.vercel.app/addtask", {
+    fetch("https://task-tempo.vercel.app/addtask", {
       method: "POST",
       headers: {
         "content-type": "application/json",

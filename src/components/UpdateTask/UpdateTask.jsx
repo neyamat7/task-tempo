@@ -36,7 +36,7 @@ const UpdateTask = () => {
 
     const updatedTaskData = updatedData;
 
-    fetch(`https://freelance-task-deploy-server.vercel.app/${task._id}`, {
+    fetch(`https://task-tempo.vercel.app/tasks/${task._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

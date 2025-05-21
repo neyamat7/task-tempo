@@ -9,7 +9,7 @@ const FeaturedSection = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://freelance-task-deploy-server.vercel.app/featured")
+    fetch("https://task-tempo.vercel.app/featured")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data || []);

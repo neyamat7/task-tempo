@@ -18,7 +18,7 @@ const MyPostedTasksTable = () => {
       try {
         // Replace this with actual API call
         const res = await fetch(
-          `https://freelance-task-deploy-server.vercel.app/${userUid}`
+          `https://task-tempo.vercel.app/user-tasks/${userUid}`
         );
         const data = await res.json();
 
@@ -51,7 +51,7 @@ const MyPostedTasksTable = () => {
     if (confirm.isConfirmed) {
       try {
         const res = await fetch(
-          `https://freelance-task-deploy-server.vercel.app/${taskId}`,
+          `https://task-tempo.vercel.app/tasks/${taskId}`,
           {
             method: "DELETE",
           }

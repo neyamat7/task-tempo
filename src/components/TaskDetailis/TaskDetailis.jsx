@@ -18,9 +18,7 @@ const TaskDetails = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const res = await fetch(
-          `https://freelance-task-deploy-server.vercel.app/${taskId}`
-        );
+        const res = await fetch(`https://task-tempo.vercel.app/tasks/${taskId}`);
         const data = await res.json();
 
         setTimeout(() => {
@@ -46,7 +44,7 @@ const TaskDetails = () => {
       bids: addNewBids,
     };
 
-    fetch(`https://freelance-task-deploy-server.vercel.app/${taskId}`, {
+    fetch(`https://task-tempo.vercel.app/tasks/${taskId}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -74,7 +72,7 @@ const TaskDetails = () => {
       bids: updatedBids,
     };
 
-    fetch("https://freelance-task-deploy-server.vercel.app/users", {
+    fetch("https://task-tempo.vercel.app/users", {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -85,9 +83,8 @@ const TaskDetails = () => {
       .then((data) => {
         updateTaskBids(taskId);
         setBids(updatedBids);
+        alert("Your bid has been placed!");
       });
-
-    alert("Your bid has been placed!");
   };
 
   if (loading) {
