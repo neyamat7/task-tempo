@@ -8,68 +8,56 @@ import {
   FaPhone,
   FaTwitter,
 } from "react-icons/fa";
+import { Link } from "react-router";
+import SmallLink from "./SmallLink";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2B2B2B] text-white">
+    <footer className="bg-hover-clr text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-      
           <div>
-            <h3 className="text-2xl font-bold mb-6">TaskMarket</h3>
+            <h3 className="text-2xl font-bold mb-6">TaskTempo</h3>
             <p className="text-gray-300 mb-6 text-lg">
               The premier marketplace for freelancers and clients to connect,
               collaborate, and create amazing results together.
             </p>
             <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center bg-[#362222] text-white rounded-full hover:bg-[#423F3E] transition-colors"
-              >
+              <SmallLink href="https://www.facebook.com">
                 <FaFacebook />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center bg-[#362222] text-white rounded-full hover:bg-[#423F3E] transition-colors"
-              >
+              </SmallLink>
+              <SmallLink href="https://x.com/">
                 <FaTwitter />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center bg-[#362222] text-white rounded-full hover:bg-[#423F3E] transition-colors"
-              >
+              </SmallLink>
+              <SmallLink href="https://www.instagram.com/">
                 <FaInstagram />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center bg-[#362222] text-white rounded-full hover:bg-[#423F3E] transition-colors"
-              >
+              </SmallLink>
+              <SmallLink href="https://www.linkedin.com/">
                 <FaLinkedin />
-              </a>
+              </SmallLink>
             </div>
           </div>
 
-       
           <div>
             <h3 className="text-xl font-bold mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   className="text-gray-300 hover:text-white transition-colors flex items-center"
                 >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/browse-task"
                   className="text-gray-300 hover:text-white transition-colors flex items-center"
                 >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Browse Tasks
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -90,19 +78,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   About Us
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Contact
                 </a>
@@ -110,84 +92,62 @@ export default function Footer() {
             </ul>
           </div>
 
-      
           <div>
-            <h3 className="text-xl font-bold mb-6">Categories</h3>
+            <h3 className="text-xl font-bold mb-6">Terms & Conditions</h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  Web Development
+                  Terms of Service
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  Graphic Design
+                  Privacy Policy
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  Writing & Translation
+                  Cookie Policy
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  Marketing
+                  Refund Policy
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  Video & Animation
+                  User Agreement
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors flex items-center"
-                >
+                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  All Categories
+                  Intellectual Property
                 </a>
               </li>
             </ul>
           </div>
 
-    
           <div>
             <h3 className="text-xl font-bold mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <FaMapMarkerAlt className="mt-1 mr-3 flex-shrink-0 text-[#423F3E]" />
-                <span>
-                  123 Market Street, Suite 456, San Francisco, CA 94103
-                </span>
+                <span>123 Market Street, Dhaka 456, Mirpur, CA 94103</span>
               </li>
               <li className="flex items-center">
                 <FaPhone className="mr-3 flex-shrink-0 text-[#423F3E]" />
-                <span>+1 (555) 123-4567</span>
+                <span>+8801316350853</span>
               </li>
               <li className="flex items-center">
                 <FaEnvelope className="mr-3 flex-shrink-0 text-[#423F3E]" />
-                <span>support@taskmarket.com</span>
+                <span>support@tasktempo.com</span>
               </li>
             </ul>
             <div className="mt-6 pt-6 border-t border-gray-700">
@@ -198,9 +158,9 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="px-4 py-2 bg-[#171010] text-white rounded-l-lg focus:outline-none w-full"
+                  className="px-4 py-2 bg-card-clr text-white rounded-l-lg focus:outline-none w-full"
                 />
-                <button className="bg-[#362222] hover:bg-[#423F3E] px-4 py-2 rounded-r-lg transition-colors">
+                <button className="bg-dark-clr hover:bg-[#423F3E] px-4 py-2 rounded-r-lg transition-colors cursor-pointer">
                   Subscribe
                 </button>
               </div>
@@ -210,7 +170,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
           <p className="flex items-center justify-center">
-            &copy; {new Date().getFullYear()} TaskMarket. All rights reserved.
+            &copy; {new Date().getFullYear()} TaskTempo. All rights reserved.
             Made with <FaHeart className="text-red-500 mx-1" /> for freelancers
           </p>
           <div className="mt-4 space-x-6">

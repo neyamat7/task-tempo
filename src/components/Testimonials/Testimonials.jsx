@@ -8,7 +8,7 @@ export default function Testimonials() {
   const { darkMode } = useTheme();
 
   return (
-    <section className={`py-20 ${darkMode ? "bg-[#171010]" : "bg-white"}`}>
+    <section className={`py-20 ${darkMode ? "bg-card-clr" : "bg-white"}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2
@@ -16,7 +16,7 @@ export default function Testimonials() {
               darkMode ? "text-white" : "text-[#362222]"
             } mb-4`}
           >
-            What Our Users Say
+            Why Professionals Choose Us
           </h2>
           <p
             className={`text-lg ${
@@ -32,10 +32,10 @@ export default function Testimonials() {
             <div
               key={index}
               className={`${
-                darkMode ? "bg-[#2B2B2B]" : "bg-gray-50"
+                darkMode ? "bg-dark-clr" : "bg-gray-50"
               } p-8 rounded-xl shadow-lg relative transform hover:-translate-y-2 transition-transform duration-300`}
             >
-              <div className="absolute -top-4 -left-2 w-12 h-12 flex items-center justify-center bg-[#362222] text-white rounded-full">
+              <div className="absolute -top-4 -left-2 w-12 h-12 flex items-center justify-center bg-hover-clr text-white rounded-full">
                 <FaQuoteLeft />
               </div>
 
@@ -90,7 +90,7 @@ export default function Testimonials() {
 
         <div
           className={`text-center mt-16 ${
-            darkMode ? "bg-[#423F3E]" : "bg-[#362222]"
+            darkMode ? "bg-hover-clr" : "bg-gray-500"
           } text-white p-10 rounded-xl max-w-4xl mx-auto shadow-xl`}
         >
           <h3 className="text-2xl font-bold mb-4">

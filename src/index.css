@@ -2,12 +2,11 @@
 @plugin "daisyui";
 
 @theme {
-  --color-primary: #1f4529;
-  --color-secondary: #47663b;
-  --color-accent: #f8f8f5;
-  --color-darker: #2d2d2a;
-  --color-lightBg: #e8ecd7;
+  --color-dark-clr: #141a22;
+  --color-card-clr: #1f2630;
+  --color-hover-clr: #0d121a;
 }
+
 input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px #746f6f inset !important;
   -webkit-box-shadow: 0 0 0px 1000px #9a9881 inset !important;

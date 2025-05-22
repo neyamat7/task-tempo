@@ -6,7 +6,7 @@ export default function Plans() {
   const { darkMode } = useTheme();
 
   return (
-    <section className={`py-20 ${darkMode ? "bg-[#2B2B2B]" : "bg-gray-50"}`}>
+    <section className={`py-20 ${darkMode ? "bg-dark-clr" : "bg-gray-100"}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2
@@ -14,14 +14,14 @@ export default function Plans() {
               darkMode ? "text-white" : "text-[#362222]"
             } mb-4`}
           >
-            Simple, Transparent Pricing
+            Simple Plans, Big Impact
           </h2>
           <p
             className={`text-lg ${
               darkMode ? "text-gray-300" : "text-gray-600"
             } max-w-2xl mx-auto`}
           >
-            Choose the plan that works best for your needs
+            Choose Your Plan, No Treasure Map Needed
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export default function Plans() {
             <div
               key={index}
               className={`${
-                darkMode ? "bg-[#171010]" : "bg-white"
+                darkMode ? "bg-card-clr" : "bg-white"
               } rounded-xl shadow-lg overflow-hidden ${
                 plan.popular
                   ? "ring-4 ring-[#362222] transform scale-105 md:scale-110 z-10"
@@ -38,7 +38,7 @@ export default function Plans() {
               } transition-all duration-300 hover:shadow-xl`}
             >
               {plan.popular && (
-                <div className="bg-[#362222] text-white text-center py-2 font-medium">
+                <div className="bg-dark-clr text-white text-center py-2 font-medium">
                   Most Popular
                 </div>
               )}
@@ -90,11 +90,11 @@ export default function Plans() {
                 <button
                   className={`mb-6 w-full py-4 rounded-lg transition-colors font-medium ${
                     plan.popular
-                      ? "bg-[#362222] hover:bg-[#423F3E] text-white"
+                      ? "bg-dark-clr hover:bg-[#423F3E] text-white"
                       : `${
                           darkMode
-                            ? "border-2 border-white text-white hover:bg-white hover:text-[#171010]"
-                            : "border-2 border-[#362222] text-[#362222] hover:bg-[#362222] hover:text-white"
+                            ? "border-2 bg-dark-clr border-white text-white hover:bg-hover-clr hover:text-white"
+                            : "border-2 border-[#0f0808] text-[#362222] hover:bg-[#362222] hover:text-white"
                         }`
                   } transform hover:scale-105 transition-transform duration-300`}
                 >

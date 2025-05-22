@@ -23,6 +23,7 @@ const Login = () => {
 
   const notify = () =>
     toast.success("Your have successfully logged into your account!");
+  const notifyError = (errMsg) => toast.error(errMsg);
 
   function handleFocus(e) {
     if (e.target.value.length > 0) {
@@ -44,6 +45,7 @@ const Login = () => {
         console.error(err.message);
         setLoading(false);
         setError(err?.message);
+        notifyError(err?.message);
       });
   }
 
@@ -55,23 +57,24 @@ const Login = () => {
       })
       .catch((error) => {
         setError(error?.message);
+        notifyError(error?.message);
       });
   }
 
   return (
     <div
       className={`flex flex-col items-center justify-center min-h-[calc(100vh-409px)] ${
-        darkMode ? "bg-[#241d1d]" : "bg-gray-200"
+        darkMode ? "bg-dark-clr" : "bg-gray-200"
       }`}
     >
       <div className={`my-10 md:my-20 w-full max-w-md px-4 sm:px-0`}>
         <div
           className={`rounded-xl shadow-lg overflow-hidden ${
-            darkMode ? "bg-[#2B2B2B] border border-[#423F3E]/30" : "bg-white"
+            darkMode ? "bg-card-clr border border-[#423F3E]/30" : "bg-white"
           }`}
         >
           <div
-            className={`px-6 py-6 ${darkMode ? "bg-[#362222]" : "bg-white"}`}
+            className={`px-6 py-6 ${darkMode ? "bg-hover-clr" : "bg-white"}`}
           >
             <h1
               className={`text-2xl md:text-3xl font-bold text-center ${
@@ -108,7 +111,7 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className={`w-full px-4 py-2.5 rounded-lg border ${
                     darkMode
-                      ? "bg-[#171010] border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                      ? "bg-dark-clr border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
                       : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                   } focus:outline-none focus:ring-2`}
                   placeholder="Your Email"
@@ -151,7 +154,7 @@ const Login = () => {
                     required
                     className={`w-full px-4 py-2.5 rounded-lg border ${
                       darkMode
-                        ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                        ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
                         : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                     } focus:outline-none focus:ring-2 pr-10`}
                   />
@@ -186,9 +189,9 @@ const Login = () => {
               <button
                 onClick={handleSignInWithPassword}
                 type="submit"
-                className={`w-full py-2.5 px-4 rounded-lg font-medium transition-all transform hover:scale-[1.01] ${
+                className={`cursor-pointer w-full py-2.5 px-4 rounded-lg font-medium transition-all transform hover:scale-[1.01] ${
                   darkMode
-                    ? "bg-[#423F3E] hover:bg-[#362222] text-white"
+                    ? "bg-gray-600 hover:bg-dark-clr text-white"
                     : "bg-blue-600 hover:bg-blue-700 text-white"
                 }`}
               >
@@ -218,9 +221,9 @@ const Login = () => {
               <button
                 onClick={handleGoogleSignIn}
                 type="button"
-                className={`w-full py-2.5 px-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors ${
+                className={`cursor-pointer w-full py-2.5 px-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors ${
                   darkMode
-                    ? "bg-[#362222] hover:bg-[#423F3E] text-gray-200 border border-[#423F3E]"
+                    ? "bg-gray-700 hover:bg-dark-clr text-gray-200 border border-[#423F3E]"
                     : "bg-white hover:bg-gray-100 text-gray-700 border border-gray-300"
                 }`}
               >
@@ -233,7 +236,7 @@ const Login = () => {
           <div
             className={`px-6 sm:px-8 py-4 text-center border-t ${
               darkMode
-                ? "border-gray-700 bg-[#171010]"
+                ? "border-gray-700 bg-hover-clr"
                 : "border-gray-200 bg-gray-50"
             }`}
           >
@@ -262,96 +265,3 @@ const Login = () => {
 };
 
 export default Login;
-
-{
-  /* <div className="flex flex-col items-center justify-center bg-gray-100 min-h-[calc(100vh-409px)]">
-      <div className="bg-white shadow-md my-20 py-6 rounded-md">
-        <form className="px-6 sm:px-8 pb-8 mb-4 w-[280px] min-[390px]:w-[350px] sm:w-[400px]">
-          <h1 className="text-3xl text-center font-bold mb-10">Login</h1>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              name="email"
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
-              placeholder="Your Email"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <div className="relative">
-              <input
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  handleFocus(e);
-                }}
-                name="password"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
-                id="password"
-                type={showPass ? "text" : "password"}
-                placeholder="Password"
-                required
-              />
-              <span
-                onClick={() => setShowPass((prev) => !prev)}
-                className={`absolute right-1 top-2 text-2xl ${
-                  focused ? "flex" : "hidden"
-                }`}
-              >
-                {showPass ? <FaEyeSlash /> : <FaEye />}
-              </span>
-            </div>
-            <div className="flex items-center justify-end">
-              <Link
-                to="/forget-password"
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              >
-                Forgot Password?
-              </Link>
-            </div>
-          </div>
-          <p className="text-red-500 font-semibold mb-2">{error}</p>
-          <button
-            onClick={handleSignInWithPassword}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            type="submit"
-          >
-            Sign In
-          </button>
-          <p className="mt-3">
-            Don't Have an Account?
-            <Link
-              to="/register"
-              className="text-blue-600 font-bold hover:underline"
-            >
-              Register
-            </Link>
-          </p>
-        </form>
-
-        <div>
-          <button
-            onClick={handleGoogleSignIn}
-            className="bg-white hover:bg-gray-200 text-slate-600 border border-gray-300 font-bold py-2 px-4 rounded  flex items-center gap-2 w-fit mx-auto mt-0"
-          >
-            <FcGoogle size={24} /> Sign in with Google
-          </button>
-        </div>
-      </div>
-    </div> */
-}

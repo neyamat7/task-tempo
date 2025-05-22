@@ -5,7 +5,7 @@ export const testimonials = [
     image:
       "https://i.postimg.cc/B68jLRQp/portrait-white-man-isolated-53876-40306.avif",
     quote:
-      "TaskMarket has completely changed how I find work. The bidding process is transparent, and I've been able to build long-term relationships with clients.",
+      "TaskTempo has completely changed how I find work. The bidding process is transparent, and I've been able to build long-term relationships with clients.",
     rating: 5,
   },
   {

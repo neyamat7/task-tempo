@@ -26,6 +26,7 @@ const UpdateTask = () => {
       })
       .catch((err) => {
         setLoading(false);
+        console.error(err);
         throw new Error("failed to fetch task to be updated");
       });
   }, [taskId]);
@@ -73,17 +74,17 @@ const UpdateTask = () => {
   return (
     <section
       className={`py-12 px-4 min-h-screen ${
-        darkMode ? "bg-[#221a1a]" : "bg-gray-200"
+        darkMode ? "bg-dark-clr" : "bg-gray-200"
       }`}
     >
       <div className="max-w-3xl mx-auto">
         <div
           className={`rounded-xl shadow-lg overflow-hidden ${
-            darkMode ? "bg-[#2B2B2B] border border-[#423F3E]/30" : "bg-white"
+            darkMode ? "bg-card-clr border border-[#423F3E]/30" : "bg-white"
           }`}
         >
           <div
-            className={`px-6 py-8 ${darkMode ? "bg-[#362222]" : "bg-white"}`}
+            className={`px-6 py-8 ${darkMode ? "bg-hover-clr" : "bg-white"}`}
           >
             <h2
               className={`text-2xl md:text-3xl font-bold text-center ${
@@ -119,7 +120,7 @@ const UpdateTask = () => {
                 placeholder="e.g., Build a landing page"
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   darkMode
-                    ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                    ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
                     : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                 } focus:outline-none focus:ring-2`}
               />
@@ -141,7 +142,7 @@ const UpdateTask = () => {
                   required
                   className={`w-full px-4 py-2.5 rounded-lg border appearance-none ${
                     darkMode
-                      ? "bg-[#171010] border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                      ? "bg-dark-clr border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
                       : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                   } focus:outline-none focus:ring-2`}
                 >
@@ -188,7 +189,7 @@ const UpdateTask = () => {
                 placeholder="Describe what needs to be done..."
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   darkMode
-                    ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                    ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
                     : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                 } focus:outline-none focus:ring-2`}
               ></textarea>
@@ -211,7 +212,7 @@ const UpdateTask = () => {
                     dateFormat="yyyy-MM-dd"
                     className={`w-full px-4 py-2.5 rounded-lg border ${
                       darkMode
-                        ? "bg-[#171010] border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                        ? "bg-dark-clr border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
                         : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                     } focus:outline-none focus:ring-2`}
                   />
@@ -264,7 +265,7 @@ const UpdateTask = () => {
                     placeholder="e.g., 200"
                     className={`w-full pl-8 pr-4 py-2.5 rounded-lg border ${
                       darkMode
-                        ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                        ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
                         : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                     } focus:outline-none focus:ring-2`}
                   />
@@ -274,7 +275,7 @@ const UpdateTask = () => {
 
             <div
               className={`mt-8 p-4 rounded-lg ${
-                darkMode ? "bg-[#362222]/30" : "bg-gray-50"
+                darkMode ? "bg-hover-clr/40" : "bg-gray-50"
               }`}
             >
               <h3
@@ -301,7 +302,7 @@ const UpdateTask = () => {
                     readOnly
                     className={`w-full px-4 py-2 rounded-lg border ${
                       darkMode
-                        ? "bg-[#171010]/50 border-[#423F3E] text-gray-400"
+                        ? "bg-dark-clr border-[#423F3E] text-gray-400"
                         : "bg-gray-100 border-gray-200 text-gray-500"
                     } cursor-not-allowed`}
                   />
@@ -322,7 +323,7 @@ const UpdateTask = () => {
                     readOnly
                     className={`w-full px-4 py-2 rounded-lg border ${
                       darkMode
-                        ? "bg-[#171010]/50 border-[#423F3E] text-gray-400"
+                        ? "bg-dark-clr border-[#423F3E] text-gray-400"
                         : "bg-gray-100 border-gray-200 text-gray-500"
                     } cursor-not-allowed`}
                   />
@@ -333,9 +334,9 @@ const UpdateTask = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 type="submit"
-                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all transform hover:scale-[1.01] ${
+                className={`cursor-pointer flex-1 py-3 px-4 rounded-lg font-medium transition-all transform hover:scale-[1.01] ${
                   darkMode
-                    ? "bg-[#423F3E] hover:bg-[#362222] text-white"
+                    ? "bg-hover-clr hover:bg-dark-clr text-white"
                     : "bg-blue-600 hover:bg-blue-700 text-white"
                 }`}
               >
@@ -346,7 +347,7 @@ const UpdateTask = () => {
                 to="/my-tasks"
                 className={`flex-1 py-3 px-4 rounded-lg font-medium text-center transition-colors ${
                   darkMode
-                    ? "bg-transparent border border-[#423F3E] text-gray-300 hover:bg-[#362222]"
+                    ? "bg-transparent border border-[#423F3E] text-gray-300 hover:bg-dark-clr"
                     : "bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-100"
                 }`}
               >

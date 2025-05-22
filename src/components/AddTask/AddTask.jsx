@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
 import { categories } from "../../data/taskCategories";
+import DollarIcon from "../Icons/DollarIcon";
+import DownArrowIcon from "../Icons/DownArrowIcon";
 import Loading from "../Loading/Loading";
 
 const AddTask = () => {
@@ -81,6 +83,7 @@ const AddTask = () => {
       })
       .catch((err) => {
         console.error("failed to add new task", err);
+        toast.error("Faied to submit task");
       });
   };
 
@@ -91,18 +94,18 @@ const AddTask = () => {
   return (
     <div
       className={`min-h-screen py-12 px-4 ${
-        darkMode ? "bg-[#221a1a]" : "bg-gray-200"
+        darkMode ? "bg-dark-clr" : "bg-gray-200"
       }`}
     >
       <div
         className={`max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden ${
           darkMode
-            ? "bg-[#2B2B2B] border border-[#423F3E]/30"
+            ? "bg-card-clr border border-[#423F3E]/30"
             : "bg-white border border-gray-200"
         }`}
       >
         <div
-          className={`px-6 py-8 ${darkMode ? "bg-[#362222]" : "bg-gray-50"}`}
+          className={`px-6 py-8 ${darkMode ? "bg-hover-clr" : "bg-gray-50"}`}
         >
           <h2
             className={`text-2xl md:text-3xl font-bold text-center ${
@@ -139,7 +142,7 @@ const AddTask = () => {
                 placeholder="e.g., Build a landing page"
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   darkMode
-                    ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                    ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
                     : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                 } focus:outline-none focus:ring-2`}
               />
@@ -160,7 +163,7 @@ const AddTask = () => {
                   onChange={handleChange}
                   className={`w-full px-4 py-2.5 rounded-lg border appearance-none ${
                     darkMode
-                      ? "bg-[#171010] border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                      ? "bg-dark-clr border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
                       : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                   } focus:outline-none focus:ring-2`}
                 >
@@ -171,21 +174,7 @@ const AddTask = () => {
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3">
-                  <svg
-                    className={`h-4 w-4 ${
-                      darkMode ? "text-gray-400" : "text-gray-500"
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                  <DownArrowIcon />
                 </div>
               </div>
             </div>
@@ -207,7 +196,7 @@ const AddTask = () => {
                 placeholder="Describe what needs to be done..."
                 className={`w-full px-4 py-2.5 rounded-lg border ${
                   darkMode
-                    ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                    ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
                     : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                 } focus:outline-none focus:ring-2`}
               ></textarea>
@@ -229,7 +218,7 @@ const AddTask = () => {
                   dateFormat="yyyy-MM-dd"
                   className={`w-full px-4 py-2.5 rounded-lg border ${
                     darkMode
-                      ? "bg-[#171010] border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                      ? "bg-dark-clr border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
                       : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                   } focus:outline-none focus:ring-2`}
                 />
@@ -260,7 +249,9 @@ const AddTask = () => {
                   darkMode ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                Budget ($)
+                <div className="flex items-center gap-1">
+                  Budget <DollarIcon />
+                </div>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -269,7 +260,7 @@ const AddTask = () => {
                       darkMode ? "text-gray-500" : "text-gray-500"
                     }`}
                   >
-                    $
+                    <DollarIcon />
                   </span>
                 </div>
                 <input
@@ -282,7 +273,7 @@ const AddTask = () => {
                   placeholder="e.g., 200"
                   className={`w-full pl-8 pr-4 py-2.5 rounded-lg border ${
                     darkMode
-                      ? "bg-[#171010] border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                      ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
                       : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
                   } focus:outline-none focus:ring-2`}
                 />
@@ -291,7 +282,7 @@ const AddTask = () => {
 
             <div
               className={`mt-8 p-4 rounded-lg ${
-                darkMode ? "bg-[#362222]/30" : "bg-gray-50"
+                darkMode ? "bg-hover-clr/40" : "bg-gray-50"
               }`}
             >
               <h3
@@ -317,7 +308,7 @@ const AddTask = () => {
                   readOnly
                   className={`w-full px-4 py-2 rounded-lg border ${
                     darkMode
-                      ? "bg-[#171010]/50 border-[#423F3E] text-gray-400"
+                      ? "bg-dark-clr/50 border-[#423F3E] text-gray-400"
                       : "bg-gray-100 border-gray-200 text-gray-500"
                   } cursor-not-allowed`}
                 />
@@ -338,7 +329,7 @@ const AddTask = () => {
                   readOnly
                   className={`w-full px-4 py-2 rounded-lg border ${
                     darkMode
-                      ? "bg-[#171010]/50 border-[#423F3E] text-gray-400"
+                      ? "bg-dark-clr/50 border-[#423F3E] text-gray-400"
                       : "bg-gray-100 border-gray-200 text-gray-500"
                   } cursor-not-allowed`}
                 />
@@ -348,10 +339,10 @@ const AddTask = () => {
             <div className="mt-8">
               <button
                 type="submit"
-                className={`w-full py-3 px-4 rounded-lg font-medium transition-all transform hover:scale-[1.01] ${
+                className={`cursor-pointer w-full py-3 px-4 rounded-lg font-medium transition-all transform hover:scale-[1.01] ${
                   darkMode
-                    ? "bg-[#423F3E] hover:bg-[#362222] text-white"
-                    : "bg-blue-600 hover:bg-blue-700 text-white"
+                    ? "bg-dark-clr hover:bg-hover-clr text-white"
+                    : "bg-card-clr hover:bg-dark-clr text-white"
                 }`}
               >
                 Post Task

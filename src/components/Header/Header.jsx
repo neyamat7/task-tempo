@@ -15,9 +15,7 @@ const Header = () => {
   const { pathname, state } = useLocation();
 
   const notify = () =>
-    toast.info(
-      "Log out complete! Come back soon to manage your bills with ease."
-    );
+    toast.info("Log out complete! Come back soon to manage your posted tasks");
 
   function handleLogOut() {
     signOutUser()
@@ -25,7 +23,8 @@ const Header = () => {
         notify();
       })
       .catch((error) => {
-        console.log("Sign out error:", error);
+        console.error("Sign out error:", error);
+        toast.error("sign out error");
       });
   }
 
@@ -133,7 +132,7 @@ const Header = () => {
             : ""
         } ${user ? "hidden" : "flex"} ${
           darkMode
-            ? "bg-[#362222] text-gray-200 hover:bg-[#423F3E]"
+            ? "bg-dark-clr text-gray-200 hover:bg-[#423F3E]"
             : "bg-gray-100 text-gray-800 hover:bg-gray-200"
         }`}
       >
@@ -148,7 +147,7 @@ const Header = () => {
             : ""
         } ${user ? "hidden" : "flex"} ${
           darkMode
-            ? "bg-[#362222] text-gray-200 hover:bg-[#423F3E]"
+            ? "bg-dark-clr text-gray-200 hover:bg-card-clr"
             : "bg-gray-100 text-gray-800 hover:bg-gray-200"
         }`}
       >
@@ -157,10 +156,10 @@ const Header = () => {
     </>
   );
 
-  //sticky top-0 z-50
+  
 
   return (
-    <div className={`shadow-md ${darkMode ? "bg-[#332a2a]" : "bg-gray-50"}`}>
+    <div className={`shadow-md ${darkMode ? "bg-card-clr" : "bg-gray-50"}`}>
       <div className="navbar max-w-screen-xl mx-auto w-full flex justify-between pr-4">
         <div className="flex items-center">
           <div className={`dropdown ${user ? "md:hidden" : "lg:hidden"}`}>
@@ -169,7 +168,7 @@ const Header = () => {
               role="button"
               className={`btn btn-ghost btn-circle ${
                 darkMode
-                  ? "hover:bg-[#362222]"
+                  ? "hover:bg-dark-clr"
                   : "hover:bg-gray-200 text-gray-500"
               }`}
             >
@@ -179,7 +178,7 @@ const Header = () => {
               tabIndex={0}
               className={`menu menu-sm dropdown-content rounded-box z-10 mt-3 w-52 p-2 shadow space-y-3 border ${
                 darkMode
-                  ? "bg-[#2B2B2B] border-[#423F3E]"
+                  ? "bg-dark-clr border-[#423F3E]"
                   : "bg-white border-gray-200"
               }`}
             >
@@ -210,7 +209,7 @@ const Header = () => {
             onClick={toggleTheme}
             className={`btn btn-sm btn-ghost btn-circle transition-colors ${
               darkMode
-                ? "hover:bg-[#362222] border border-gray-50"
+                ? "hover:bg-dark-clr border border-gray-50"
                 : "hover:bg-gray-200 border border-gray-400 text-black"
             }`}
             aria-label="Toggle Theme"
@@ -242,7 +241,7 @@ const Header = () => {
                 tabIndex={0}
                 className={`menu menu-sm dropdown-content rounded-box z-10 mt-0 w-fit p-2 shadow border ${
                   darkMode
-                    ? "bg-[#2B2B2B] border-[#423F3E] text-gray-200"
+                    ? "bg-dark-clr border-[#423F3E] text-gray-200"
                     : "bg-white border-gray-200"
                 }`}
               >
@@ -269,7 +268,7 @@ const Header = () => {
                   <a
                     className={`border border-gray-200 flex justify-center transition-colors text-lg ${
                       darkMode
-                        ? "text-gray-200 hover:bg-[#362222]"
+                        ? "text-gray-200 hover:bg-hover-clr"
                         : "text-gray-800 hover:bg-gray-100"
                     }`}
                     onClick={handleLogOut}
@@ -287,3 +286,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

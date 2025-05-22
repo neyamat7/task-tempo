@@ -4,8 +4,8 @@ import {
   FaMoneyBillWave,
   FaUserCheck,
 } from "react-icons/fa";
-import { Link } from "react-router";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import Button from "../Button/Button";
 
 export default function Services() {
   const { darkMode } = useTheme();
@@ -53,15 +53,15 @@ export default function Services() {
   ];
 
   return (
-    <section className={`py-20 ${darkMode ? "bg-[#171010]" : "bg-white"}`}>
+    <section className={`py-20 ${darkMode ? "bg-card-clr" : "bg-white"}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2
             className={`text-3xl md:text-4xl font-bold ${
-              darkMode ? "text-white" : "text-[#362222]"
+              darkMode ? "text-white" : "text-dark-clr"
             } mb-4`}
           >
-            How It Works
+            From Vision to Victory: The Flow
           </h2>
           <p
             className={`text-lg ${
@@ -80,14 +80,14 @@ export default function Services() {
             >
               <div
                 className={`w-24 h-24 flex items-center justify-center ${
-                  darkMode ? "bg-[#2B2B2B]" : "bg-gray-100"
+                  darkMode ? "bg-gray-700" : "bg-gray-100"
                 } rounded-full mb-6 shadow-lg transform hover:scale-110 transition-transform duration-300`}
               >
                 {step.icon}
               </div>
               <h3
                 className={`text-2xl font-semibold ${
-                  darkMode ? "text-white" : "text-[#362222]"
+                  darkMode ? "text-white" : "text-dark-clr"
                 } mb-3`}
               >
                 {step.title}
@@ -125,12 +125,7 @@ export default function Services() {
         </div>
 
         <div className="text-center mt-16">
-          <Link
-            to="/add-task"
-            className="px-8 py-4 bg-[#362222] hover:bg-[#423F3E] text-white rounded-lg  font-medium shadow-lg transform hover:scale-105 transition-transform duration-300"
-          >
-            Get Started Now
-          </Link>
+          <Button href="/add-task">Get Started Now</Button>
         </div>
       </div>
     </section>

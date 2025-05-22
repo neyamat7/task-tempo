@@ -4,13 +4,15 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+import Button from "../Button/Button";
+import ClockIcon from "../Icons/ClockIcon";
+import DollarIcon from "../Icons/DollarIcon";
 import Loading from "../Loading/Loading";
 
 const MyPostedTasksTable = () => {
   const { darkMode } = useTheme();
 
   const { user, setBids } = useAuth();
-  console.log(user?.uid);
 
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -79,7 +81,7 @@ const MyPostedTasksTable = () => {
   }
 
   return (
-    <section className={`py-28 ${darkMode ? "bg-[#4c3f3f]" : "bg-gray-200"}`}>
+    <section className={`py-28 ${darkMode ? "bg-dark-clr" : "bg-gray-200"}`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-10 text-center">
           <h2
@@ -103,13 +105,13 @@ const MyPostedTasksTable = () => {
           <div
             className={`flex flex-col items-center justify-center py-16 px-6 rounded-xl ${
               darkMode
-                ? "bg-[#2B2B2B] border border-[#423F3E]/30"
+                ? "bg-card-clr border border-[#423F3E]/30"
                 : "bg-white border border-gray-200"
             }`}
           >
             <div
               className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${
-                darkMode ? "bg-[#362222]" : "bg-gray-100"
+                darkMode ? "bg-dark-clr" : "bg-gray-100"
               }`}
             >
               <FaRegLightbulb
@@ -132,20 +134,13 @@ const MyPostedTasksTable = () => {
             >
               Create your first task to start receiving bids from freelancers.
             </p>
-            <Link
-              to="/add-task"
-              className={`mt-6 px-6 py-2 rounded-lg font-medium ${
-                darkMode
-                  ? "bg-[#423F3E] hover:bg-[#362222] text-white"
-                  : "bg-blue-600 hover:bg-blue-700 text-white"
-              }`}
-            >
-              Create a Task
-            </Link>
+
+            <div className="mt-10">
+              <Button href="/add-task">Create a Task</Button>
+            </div>
           </div>
         ) : (
           <>
-     
             <div className="hidden sm:block overflow-hidden rounded-xl shadow-lg">
               <div
                 className={`overflow-x-auto ${
@@ -156,7 +151,7 @@ const MyPostedTasksTable = () => {
                   <thead
                     className={
                       darkMode
-                        ? "bg-[#171010] text-gray-200"
+                        ? "bg-hover-clr text-gray-200"
                         : "bg-gray-50 text-gray-700"
                     }
                   >
@@ -204,8 +199,8 @@ const MyPostedTasksTable = () => {
                         className={`${
                           darkMode
                             ? index % 2 === 0
-                              ? "bg-[#2B2B2B]"
-                              : "bg-[#362222]/20"
+                              ? "bg-card-clr"
+                              : "bg-hover-clr/50"
                             : index % 2 === 0
                             ? "bg-white"
                             : "bg-gray-50"
@@ -235,22 +230,7 @@ const MyPostedTasksTable = () => {
                           }`}
                         >
                           <div className="flex items-center">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`h-4 w-4 mr-2 ${
-                                darkMode ? "text-gray-400" : "text-gray-500"
-                              }`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                              />
-                            </svg>
+                            <ClockIcon />
                             {new Date(task.deadline).toLocaleDateString(
                               "en-US",
                               {
@@ -266,23 +246,7 @@ const MyPostedTasksTable = () => {
                           }`}
                         >
                           <div className="flex items-center">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`h-4 w-4 mr-2 ${
-                                darkMode ? "text-gray-400" : "text-gray-500"
-                              }`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            ${task.budget}
+                            <DollarIcon />${task.budget}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -290,15 +254,17 @@ const MyPostedTasksTable = () => {
                             className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
                               darkMode
                                 ? task.bids.length > 0
-                                  ? "bg-[#362222] text-gray-200"
-                                  : "bg-[#423F3E]/30 text-gray-400"
+                                  ? "bg-dark-clr text-gray-200"
+                                  : "bg-hover-clr text-gray-400"
                                 : task.bids.length > 0
                                 ? "bg-blue-100 text-blue-800"
-                                : "bg-gray-100 text-gray-600"
+                                : "bg-gray-200 text-gray-600"
                             }`}
                           >
                             {task.bids.length} bid
-                            {task.bids.length !== 1 && "s"}
+                            {task.bids.length !== 1 && task.bids.length > 0
+                              ? "s"
+                              : ""}
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right">
@@ -315,7 +281,7 @@ const MyPostedTasksTable = () => {
                             </Link>
                             <button
                               onClick={() => handleDeleteTask(task._id)}
-                              className={`px-3 py-1 rounded-md text-xs font-medium ${
+                              className={`cursor-pointer px-3 py-1 rounded-md text-xs font-medium ${
                                 darkMode
                                   ? "bg-red-900/80 hover:bg-red-900 text-white"
                                   : "bg-red-600 hover:bg-red-700 text-white"
@@ -332,25 +298,24 @@ const MyPostedTasksTable = () => {
               </div>
             </div>
 
-        
             <div className="sm:hidden space-y-4">
               {tasks.map((task) => (
                 <div
                   key={task._id}
                   className={`rounded-lg shadow-md overflow-hidden ${
-                    darkMode ? "bg-[#2B2B2B]" : "bg-white"
+                    darkMode ? "bg-card-clr" : "bg-white"
                   }`}
                 >
                   <div
                     className={`px-4 py-3 ${
-                      darkMode ? "bg-[#171010]" : "bg-gray-50"
+                      darkMode ? "bg-hover-clr" : "bg-gray-50"
                     }`}
                   >
                     <div className="flex justify-between items-center">
                       <span
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium ${
                           darkMode
-                            ? "bg-[#362222] text-gray-200"
+                            ? "bg-card-clr text-gray-200"
                             : "bg-blue-100 text-blue-800"
                         }`}
                       >
@@ -360,14 +325,17 @@ const MyPostedTasksTable = () => {
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium ${
                           darkMode
                             ? task.bids.length > 0
-                              ? "bg-[#362222] text-gray-200"
+                              ? "bg-card-clr text-gray-200"
                               : "bg-[#423F3E]/30 text-gray-400"
                             : task.bids.length > 0
                             ? "bg-blue-100 text-blue-800"
                             : "bg-gray-100 text-gray-600"
                         }`}
                       >
-                        {task.bids.length} bid{task.bids.length !== 1 && "s"}
+                        {task.bids.length} bid
+                        {task.bids.length !== 1 && task.bids.length > 0
+                          ? "s"
+                          : ""}
                       </span>
                     </div>
                   </div>
@@ -387,22 +355,7 @@ const MyPostedTasksTable = () => {
                           darkMode ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className={`h-4 w-4 mr-2 ${
-                            darkMode ? "text-gray-400" : "text-gray-500"
-                          }`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
+                        <ClockIcon />
                         <span
                           className={`text-sm ${
                             darkMode ? "text-gray-400" : "text-gray-500"
@@ -423,22 +376,7 @@ const MyPostedTasksTable = () => {
                           darkMode ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className={`h-4 w-4 mr-2 ${
-                            darkMode ? "text-gray-400" : "text-gray-500"
-                          }`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
+                        <DollarIcon />
                         <span
                           className={`text-sm ${
                             darkMode ? "text-gray-400" : "text-gray-500"
@@ -455,7 +393,7 @@ const MyPostedTasksTable = () => {
                         to={`/update/${task._id}`}
                         className={`px-4 py-2 rounded text-center text-sm font-medium ${
                           darkMode
-                            ? "bg-[#423F3E] hover:bg-[#362222] text-white"
+                            ? "bg-dark-clr hover:bg-hover-clr text-white"
                             : "bg-blue-600 hover:bg-blue-700 text-white"
                         }`}
                       >
