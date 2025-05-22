@@ -23,13 +23,13 @@ export default function Footer() {
               collaborate, and create amazing results together.
             </p>
             <div className="flex space-x-4">
-              <SmallLink href="https://www.facebook.com">
+              <SmallLink href="https://www.facebook.com/neyamat4">
                 <FaFacebook />
               </SmallLink>
-              <SmallLink href="https://x.com/">
+              <SmallLink href="https://x.com/neyamat7ullah">
                 <FaTwitter />
               </SmallLink>
-              <SmallLink href="https://www.instagram.com/">
+              <SmallLink href="https://www.instagram.com/neyamat7.ullah">
                 <FaInstagram />
               </SmallLink>
               <SmallLink href="https://www.linkedin.com/">
@@ -189,3 +189,4 @@ export default function Footer() {
     </footer>
   );
 }
+

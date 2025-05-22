@@ -50,18 +50,16 @@ const Hero = () => {
           }`}
         ></div>
         <div
-          className={`swiper-button-next ${
+          className={`!hidden md:!flex swiper-button-next ${
             darkMode ? "!text-gray-200" : "!text-gray-800"
           }`}
         ></div>
         <div
-          className={`swiper-button-prev ${
+          className={`!hidden md:!flex swiper-button-prev ${
             darkMode ? "!text-gray-200" : "!text-gray-800"
           }`}
         ></div>
       </div>
-
-      
     </div>
   );
 };

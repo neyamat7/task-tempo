@@ -26,9 +26,9 @@ export default function Plans() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan, index) => (
+          {plans.map((plan) => (
             <div
-              key={index}
+              key={plan.id}
               className={`${
                 darkMode ? "bg-card-clr" : "bg-white"
               } rounded-xl shadow-lg overflow-hidden ${
@@ -74,7 +74,11 @@ export default function Plans() {
                   <ul className="space-y-4 mb-8">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-center">
-                        <FaCheck className="text-[#362222] mr-3 flex-shrink-0" />
+                        <FaCheck
+                          className={`${
+                            darkMode ? "text-white" : "text-dark-clr"
+                          } mr-3 flex-shrink-0`}
+                        />
                         <span
                           className={`${
                             darkMode ? "text-gray-300" : "text-gray-600"
