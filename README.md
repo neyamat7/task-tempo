@@ -1,12 +1,36 @@
-# React + Vite
+# TaskTempo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![site overview](https://i.postimg.cc/XYc6Pn2K/Screenshot-2025-05-06-233854.png)
 
-Currently, two official plugins are available:
+## 📋 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+TaskTempo is a dynamic task management solution tailored for freelancers and clients, enabling efficient task posting, discovery, and handling. With robust authentication, complete CRUD functionality, and an intuitive design, it streamlines task collaboration.
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Secure Authentication System** - Email/password and Google login with firebase
+- **Task Management** - Complete CRUD operations for creating, reading, updating, and deleting tasks with detailed information
+- **Personal Dashboard** - Users can view and manage their posted tasks with dedicated "My Posted Tasks" section
+- **Interactive Bidding System** - Track bid counts and user engagement on task details pages
+- **Responsive Design** - Fully responsive interface with dark/light theme toggle functionality
+- **Protected Routes** - Only logged-in users can access add/edit/delete/update functionalities.
+
+## 🛠️ Technologies Used
+
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Firebase Auth
+- **Deployment:** Vercel and Netlify
+
+## Additional Libraries and npm packages:
+
+- React Router for navigation
+- React Toastify and Sweet Alert for notifications
+- Date picker for deadline selection
+- Animation libraries (React Typewriter)
+- React Icons
+
+## 🌐 Live Link
+
+**[TaskTempo Live Site](https://task-tempo.netlify.app/)**

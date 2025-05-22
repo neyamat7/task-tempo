@@ -28,9 +28,9 @@ export default function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <div
-              key={index}
+              key={testimonial.id}
               className={`${
                 darkMode ? "bg-dark-clr" : "bg-gray-50"
               } p-8 rounded-xl shadow-lg relative transform hover:-translate-y-2 transition-transform duration-300`}
@@ -51,7 +51,7 @@ export default function Testimonials() {
 
               <div className="flex items-center">
                 <img
-                  src={testimonial.image || "/placeholder.svg"}
+                  src={testimonial.image}
                   alt={testimonial.name}
                   className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-[#423F3E]"
                 />

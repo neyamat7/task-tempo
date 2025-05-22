@@ -34,7 +34,9 @@ const TaskItem = ({ task }) => {
           {task.title}
         </h3>
 
-        <p className="text-sm opacity-70 mb-4">{task.description}</p>
+        <p className="text-sm opacity-70 mb-4 line-clamp-2">
+          {task.description}
+        </p>
 
         <div className="flex items-center mb-2 opacity-80">
           <DollarIcon />

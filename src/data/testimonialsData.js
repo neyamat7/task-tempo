@@ -1,14 +1,16 @@
 export const testimonials = [
   {
+    id: 1,
     name: "Sakib Al Hasan",
     role: "Graphic Designer",
     image:
       "https://i.postimg.cc/B68jLRQp/portrait-white-man-isolated-53876-40306.avif",
     quote:
       "TaskTempo has completely changed how I find work. The bidding process is transparent, and I've been able to build long-term relationships with clients.",
-    rating: 5,
+    rating: 4,
   },
   {
+    id: 2,
     name: "Rishad Hossain",
     role: "Business Owner",
     image: "https://i.postimg.cc/CxNBWjQG/images-8.jpg",
@@ -17,6 +19,7 @@ export const testimonials = [
     rating: 5,
   },
   {
+    id: 3,
     name: "Abu Sufian",
     role: "Web Developer",
     image: "https://i.postimg.cc/YjBMSshv/05b1783cb521a13314bffbd7a6495691.jpg",
