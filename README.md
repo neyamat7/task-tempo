@@ -1,6 +1,6 @@
 # TaskTempo
 
-![site overview](https://i.postimg.cc/XYc6Pn2K/Screenshot-2025-05-06-233854.png)
+![site overview](https://i.postimg.cc/mkmNmTwW/localhost-5173.png)
 
 ## 📋 Project Overview
 
