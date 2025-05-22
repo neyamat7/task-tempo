@@ -146,7 +146,7 @@ const TaskDetails = () => {
               darkMode ? "border-gray-700" : "border-gray-200"
             }`}
           >
-            <div className="flex items-start justify-between">
+            <div className="flex flex-col sm:flex-row gap-3 items-start justify-between">
               <div>
                 <div className="flex items-center space-x-2 mb-2">
                   <span
@@ -171,12 +171,15 @@ const TaskDetails = () => {
                 <h1 className="text-2xl md:text-3xl font-bold">{task.title}</h1>
               </div>
               <div
-                className={`text-right ${
+                className={`text-left sm:text-right flex flex-col gap-1 ${
                   darkMode ? "text-gray-400" : "text-gray-500"
                 }`}
               >
                 <p className="text-sm">Posted by</p>
-                <p className="font-medium">{task.userName}</p>
+                <div className="flex flex-col">
+                  <p className="font-medium">{task.userName}</p>
+                  <small className="text-xs">{task.userEmail}</small>
+                </div>
               </div>
             </div>
           </div>

@@ -42,17 +42,6 @@ const Header = () => {
       </NavLink>
 
       <NavLink
-        to="/add-task"
-        className={({ isActive }) =>
-          `btn bg-gray-50 text-lg  ${
-            isActive ? "underline font-medium" : "font-normal"
-          } text-gray-800`
-        }
-      >
-        Add Task
-      </NavLink>
-
-      <NavLink
         to="/browse-task"
         className={({ isActive }) =>
           `btn bg-gray-50 text-lg ${
@@ -61,6 +50,17 @@ const Header = () => {
         }
       >
         Browse Tasks
+      </NavLink>
+
+      <NavLink
+        to="/add-task"
+        className={({ isActive }) =>
+          `btn bg-gray-50 text-lg  ${
+            isActive ? "underline font-medium" : "font-normal"
+          } text-gray-800`
+        }
+      >
+        Add Task
       </NavLink>
 
       <NavLink
@@ -88,16 +88,7 @@ const Header = () => {
       >
         Home
       </NavLink>
-      <NavLink
-        to="/add-task"
-        className={({ isActive }) =>
-          `btn bg-gray-50 text-base md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
-            isActive ? "underline font-medium" : "font-normal"
-          } ${darkMode ? "text-gray-200" : "text-gray-800"}`
-        }
-      >
-        Add Task
-      </NavLink>
+
       <NavLink
         to="/browse-task"
         className={({ isActive }) =>
@@ -107,6 +98,17 @@ const Header = () => {
         }
       >
         Browse Tasks
+      </NavLink>
+
+      <NavLink
+        to="/add-task"
+        className={({ isActive }) =>
+          `btn bg-gray-50 text-base md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+            isActive ? "underline font-medium" : "font-normal"
+          } ${darkMode ? "text-gray-200" : "text-gray-800"}`
+        }
+      >
+        Add Task
       </NavLink>
 
       <NavLink
@@ -156,10 +158,8 @@ const Header = () => {
     </>
   );
 
-  
-
   return (
-    <div className={`shadow-md ${darkMode ? "bg-card-clr" : "bg-gray-50"}`}>
+    <div className={` shadow-md ${darkMode ? "bg-card-clr" : "bg-gray-50"}`}>
       <div className="navbar max-w-screen-xl mx-auto w-full flex justify-between pr-4">
         <div className="flex items-center">
           <div className={`dropdown ${user ? "md:hidden" : "lg:hidden"}`}>
@@ -286,5 +286,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
