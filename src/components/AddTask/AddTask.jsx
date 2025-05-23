@@ -202,81 +202,83 @@ const AddTask = () => {
               ></textarea>
             </div>
 
-            <div>
-              <label
-                className={`block text-sm font-medium mb-1.5 ${
-                  darkMode ? "text-gray-300" : "text-gray-700"
-                }`}
-              >
-                Deadline
-              </label>
-              <div className="relative">
-                <DatePicker
-                  selected={taskData.deadline}
-                  onChange={handleDateChange}
-                  minDate={new Date()}
-                  dateFormat="yyyy-MM-dd"
-                  className={`w-full px-4 py-2.5 rounded-lg border ${
-                    darkMode
-                      ? "bg-dark-clr border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
-                      : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
-                  } focus:outline-none focus:ring-2`}
-                />
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`h-5 w-5 ${
-                      darkMode ? "text-gray-400" : "text-gray-500"
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <div>
+                <label
+                  className={`block text-sm font-medium mb-1.5 ${
+                    darkMode ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  Deadline
+                </label>
+                <div className="flex">
+                  <DatePicker
+                    selected={taskData.deadline}
+                    onChange={handleDateChange}
+                    minDate={new Date()}
+                    dateFormat="dd-MM-yyyy"
+                    className={`w-full px-4 py-2.5 rounded-lg border ${
+                      darkMode
+                        ? "bg-dark-clr border-[#423F3E] text-gray-200 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                        : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
+                    } focus:outline-none focus:ring-2`}
+                  />
+                  <div className="pointer-events-none flex items-center px-3 ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={`h-5 w-5 ${
+                        darkMode ? "text-gray-400" : "text-gray-500"
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <label
-                className={`block text-sm font-medium mb-1.5 ${
-                  darkMode ? "text-gray-300" : "text-gray-700"
-                }`}
-              >
-                <div className="flex items-center gap-1">
-                  Budget <DollarIcon />
+              <div>
+                <label
+                  className={`block text-sm font-medium mb-1.5 ${
+                    darkMode ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  <div className="flex items-center gap-1">
+                    Budget <DollarIcon />
+                  </div>
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span
+                      className={`${
+                        darkMode ? "text-gray-500" : "text-gray-500"
+                      }`}
+                    >
+                      <DollarIcon />
+                    </span>
+                  </div>
+                  <input
+                    type="number"
+                    name="budget"
+                    value={taskData.budget}
+                    onChange={handleChange}
+                    required
+                    min="1"
+                    placeholder="e.g., 200"
+                    className={`w-full pl-8 pr-4 py-2.5 rounded-lg border ${
+                      darkMode
+                        ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                        : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
+                    } focus:outline-none focus:ring-2`}
+                  />
                 </div>
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span
-                    className={`${
-                      darkMode ? "text-gray-500" : "text-gray-500"
-                    }`}
-                  >
-                    <DollarIcon />
-                  </span>
-                </div>
-                <input
-                  type="number"
-                  name="budget"
-                  value={taskData.budget}
-                  onChange={handleChange}
-                  required
-                  min="1"
-                  placeholder="e.g., 200"
-                  className={`w-full pl-8 pr-4 py-2.5 rounded-lg border ${
-                    darkMode
-                      ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
-                      : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
-                  } focus:outline-none focus:ring-2`}
-                />
               </div>
             </div>
 

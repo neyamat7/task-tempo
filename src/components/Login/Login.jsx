@@ -130,7 +130,6 @@ const Login = () => {
                     Password
                   </label>
                   <Link
-                    to="/forget-password"
                     className={`text-xs font-medium ${
                       darkMode
                         ? "text-gray-400 hover:text-gray-300"
