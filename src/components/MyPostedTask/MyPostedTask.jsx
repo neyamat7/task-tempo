@@ -57,7 +57,7 @@ const MyPostedTasksTable = () => {
             method: "DELETE",
           }
         );
-        console.log(res);
+
         if (res.ok) {
           setTasks(tasks.filter((singleTask) => singleTask._id !== taskId));
 

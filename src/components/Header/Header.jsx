@@ -12,6 +12,7 @@ const Header = () => {
   const { darkMode, toggleTheme } = useTheme();
 
   const userEmail = user?.email || user?.providerData[0].email;
+
   const { pathname, state } = useLocation();
 
   const notify = () =>
