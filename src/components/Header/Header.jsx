@@ -72,7 +72,7 @@ const Header = () => {
           } text-gray-800`
         }
       >
-        My Posted Tasks
+        My Tasks
       </NavLink>
     </>
   );
@@ -101,27 +101,40 @@ const Header = () => {
         Browse Tasks
       </NavLink>
 
-      <NavLink
-        to="/add-task"
-        className={({ isActive }) =>
-          `btn bg-gray-50 text-base md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
-            isActive ? "underline font-medium" : "font-normal"
-          } ${darkMode ? "text-gray-200" : "text-gray-800"}`
-        }
-      >
-        Add Task
-      </NavLink>
-
-      <NavLink
-        to="/my-tasks"
-        className={({ isActive }) =>
-          `btn bg-gray-50 text-base font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
-            isActive ? "underline font-medium" : "font-normal"
-          } ${darkMode ? "text-gray-200" : "text-gray-800"}`
-        }
-      >
-        My Posted Tasks
-      </NavLink>
+      {user && (
+        <>
+          <NavLink
+            to="/add-task"
+            className={({ isActive }) =>
+              `btn bg-gray-50 text-base md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+                isActive ? "underline font-medium" : "font-normal"
+              } ${darkMode ? "text-gray-200" : "text-gray-800"}`
+            }
+          >
+            Add Task
+          </NavLink>
+          <NavLink
+            to="/my-tasks"
+            className={({ isActive }) =>
+              `btn bg-gray-50 text-base font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+                isActive ? "underline font-medium" : "font-normal"
+              } ${darkMode ? "text-gray-200" : "text-gray-800"}`
+            }
+          >
+            My Tasks
+          </NavLink>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              `btn bg-gray-50 text-base font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
+                isActive ? "underline font-medium" : "font-normal"
+              } ${darkMode ? "text-gray-200" : "text-gray-800"}`
+            }
+          >
+            Dashboard
+          </NavLink>
+        </>
+      )}
     </>
   );
 
@@ -144,7 +157,7 @@ const Header = () => {
       <Link
         to="/register"
         state={state}
-        className={`btn ${
+        className={`btn hidden ${
           pathname === "/register"
             ? "btn-active bg-gray-300 text-gray-800 hover:bg-gray-400 hover:text-black"
             : ""
@@ -160,7 +173,11 @@ const Header = () => {
   );
 
   return (
-    <div className={` shadow-md ${darkMode ? "bg-card-clr" : "bg-gray-50"}`}>
+    <div
+      className={`sticky top-0 z-50 shadow-md ${
+        darkMode ? "bg-card-clr" : "bg-gray-50"
+      }`}
+    >
       <div className="navbar max-w-screen-xl mx-auto w-full flex justify-between pr-4">
         <div className="flex items-center">
           <div className={`dropdown ${user ? "md:hidden" : "lg:hidden"}`}>
@@ -206,18 +223,6 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            onClick={toggleTheme}
-            className={`btn btn-sm btn-ghost btn-circle transition-colors ${
-              darkMode
-                ? "hover:bg-dark-clr border border-gray-50"
-                : "hover:bg-gray-200 border border-gray-400 text-black"
-            }`}
-            aria-label="Toggle Theme"
-          >
-            {!darkMode ? <DarkIcon /> : <LightIcon />}
-          </button>
-
           {!user && <div className="hidden sm:flex gap-3">{buttonLinks}</div>}
 
           {user && (
@@ -280,6 +285,19 @@ const Header = () => {
               </ul>
             </div>
           )}
+
+          {/* dark and light mode */}
+          <button
+            onClick={toggleTheme}
+            className={`btn btn-sm btn-ghost btn-circle transition-colors ${
+              darkMode
+                ? "hover:bg-dark-clr border border-gray-50"
+                : "hover:bg-gray-200 border border-gray-400 text-black"
+            }`}
+            aria-label="Toggle Theme"
+          >
+            {!darkMode ? <DarkIcon /> : <LightIcon />}
+          </button>
         </div>
       </div>
     </div>

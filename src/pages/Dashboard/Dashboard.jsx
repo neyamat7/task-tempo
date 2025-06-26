@@ -1,0 +1,89 @@
+"use client";
+
+import { useState } from "react";
+import { Outlet } from "react-router";
+import DashboardHeader from "./DashbaordHeader.jsx";
+import SideBar from "./SideBar.jsx";
+
+export const mockTasks = [
+  {
+    id: 1,
+    title: "E-commerce Website Development",
+    category: "web development",
+    photoUrl: "/placeholder.svg?height=100&width=100",
+    description: "Build a modern e-commerce platform with React and Node.js",
+    deadline: "2024-02-15",
+    budget: 2500,
+    status: "in-progress",
+    userId: 1,
+    createdAt: "2024-01-10",
+  },
+  {
+    id: 2,
+    title: "Brand Logo Design",
+    category: "design",
+    photoUrl: "/placeholder.svg?height=100&width=100",
+    description: "Create a modern logo for tech startup",
+    deadline: "2024-01-30",
+    budget: 500,
+    status: "completed",
+    userId: 2,
+    createdAt: "2024-01-08",
+  },
+  {
+    id: 3,
+    title: "SEO Content Writing",
+    category: "writing",
+    photoUrl: "/placeholder.svg?height=100&width=100",
+    description: "Write 10 SEO-optimized blog posts",
+    deadline: "2024-02-20",
+    budget: 800,
+    status: "pending",
+    userId: 1,
+    createdAt: "2024-01-12",
+  },
+  {
+    id: 4,
+    title: "Product Demo Video",
+    category: "video editing",
+    photoUrl: "/placeholder.svg?height=100&width=100",
+    description: "Edit promotional video for SaaS product",
+    deadline: "2024-02-05",
+    budget: 1200,
+    status: "in-progress",
+    userId: 3,
+    createdAt: "2024-01-09",
+  },
+  {
+    id: 5,
+    title: "Website SEO Optimization",
+    category: "seo",
+    photoUrl: "/placeholder.svg?height=100&width=100",
+    description: "Optimize website for search engines",
+    deadline: "2024-02-25",
+    budget: 900,
+    status: "pending",
+    userId: 1,
+    createdAt: "2024-01-11",
+  },
+];
+
+const Dashboard = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex">
+      <SideBar
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
+
+      <div className="flex-1">
+        <DashboardHeader setIsMobileMenuOpen={setIsMobileMenuOpen} />
+        <Outlet />
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

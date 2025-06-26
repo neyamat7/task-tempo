@@ -29,6 +29,7 @@ const AddTask = () => {
     setTaskData({
       title: "",
       category: "Web Development",
+      photoUrl: "",
       description: "",
       deadline: new Date(),
       budget: "",
@@ -70,6 +71,7 @@ const AddTask = () => {
           setTaskData({
             title: "",
             category: "Web Development",
+            photoUrl: "",
             description: "",
             deadline: new Date(),
             budget: "",
@@ -177,6 +179,29 @@ const AddTask = () => {
                   <DownArrowIcon />
                 </div>
               </div>
+            </div>
+
+            <div>
+              <label
+                className={`block text-sm font-medium mb-1.5 ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                Task Photo Url
+              </label>
+              <input
+                type="url"
+                name="photoUrl"
+                value={taskData.photoUrl}
+                onChange={handleChange}
+                required
+                placeholder="e.g., https://via.placeholder.com/500x300.png"
+                className={`w-full px-4 py-2.5 rounded-lg border ${
+                  darkMode
+                    ? "bg-dark-clr border-[#423F3E] text-gray-200 placeholder-gray-500 focus:ring-[#423F3E] focus:border-[#423F3E]"
+                    : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500 focus:border-blue-500"
+                } focus:outline-none focus:ring-2`}
+              />
             </div>
 
             <div>
