@@ -6,7 +6,10 @@ export default function Plans() {
   const { darkMode } = useTheme();
 
   return (
-    <section id="plans" className={`py-20 ${darkMode ? "bg-dark-clr" : "bg-gray-100"}`}>
+    <section
+      id="plans"
+      className={`py-20 ${darkMode ? "bg-dark-clr" : "bg-gray-100"}`}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2
@@ -33,7 +36,7 @@ export default function Plans() {
                 darkMode ? "bg-card-clr" : "bg-white"
               } rounded-xl shadow-lg overflow-hidden ${
                 plan.popular
-                  ? "ring-4 ring-[#362222] transform scale-105 md:scale-110 z-10"
+                  ? "ring-4 ring-dark-clr transform scale-105 md:scale-110 z-10"
                   : ""
               } transition-all duration-300 hover:shadow-xl`}
             >
@@ -43,7 +46,7 @@ export default function Plans() {
                 </div>
               )}
 
-              <div className="p-8 flex flex-col justify-between h-full">
+              <div className="p-8 pb-2 flex flex-col justify-between h-full">
                 <div>
                   <h3
                     className={`text-2xl font-bold ${
@@ -91,7 +94,7 @@ export default function Plans() {
                   </ul>
                 </div>
 
-                <button
+                {/* <button
                   className={`mb-6 w-full py-4 rounded-lg transition-colors font-medium ${
                     plan.popular
                       ? "bg-dark-clr hover:bg-[#423F3E] text-white"
@@ -103,7 +106,7 @@ export default function Plans() {
                   } transform hover:scale-105 transition-transform duration-300`}
                 >
                   {plan.cta}
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

@@ -1,9 +1,4 @@
-import {
-  FiInfo,
-  FiSettings,
-  FiToggleLeft,
-  FiToggleRight,
-} from "react-icons/fi";
+import { FiInfo, FiSettings } from "react-icons/fi";
 
 const CookieSection = () => {
   return (
@@ -49,7 +44,6 @@ const CookieSection = () => {
                         Essential Cookies
                       </h4>
                     </div>
-                    <FiToggleRight className="h-6 w-6 text-green-500" />
                   </div>
                   <p className="text-slate-700 mb-3">
                     These cookies are necessary for the website to function
@@ -70,7 +64,6 @@ const CookieSection = () => {
                         Performance Cookies
                       </h4>
                     </div>
-                    <FiToggleRight className="h-6 w-6 text-blue-500" />
                   </div>
                   <p className="text-slate-700 mb-3">
                     These cookies collect information about how you use our
@@ -90,7 +83,6 @@ const CookieSection = () => {
                         Functional Cookies
                       </h4>
                     </div>
-                    <FiToggleLeft className="h-6 w-6 text-slate-400" />
                   </div>
                   <p className="text-slate-700 mb-3">
                     These cookies enable enhanced functionality and
@@ -110,7 +102,6 @@ const CookieSection = () => {
                         Marketing Cookies
                       </h4>
                     </div>
-                    <FiToggleLeft className="h-6 w-6 text-slate-400" />
                   </div>
                   <p className="text-slate-700 mb-3">
                     These cookies track your browsing habits to show you
