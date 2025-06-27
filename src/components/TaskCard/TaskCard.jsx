@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../../context/AuthContext/AuthContext";
+import { useTheme } from "../../context/ThemeProvider/ThemProvider";
 
 const TaskCard = ({ task, onDelete }) => {
   const { user } = useAuth();
   const [isExpanded, setIsExpanded] = useState(false);
   const ownedTask = task?.userUid === user?.uid;
 
+  const { darkMode } = useTheme();
+
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition-all duration-300 hover:transform">
+    <div
+      className={`${
+        darkMode ? "bg-dark-clr" : "bg-white"
+      } rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition-all duration-300 hover:transform`}
+    >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start space-x-4 flex-1">
           <img
@@ -18,15 +25,27 @@ const TaskCard = ({ task, onDelete }) => {
           />
           <div className="flex-1 min-w-0">
             <Link to={`/details/${task._id}`}>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+              <h3
+                className={`text-lg font-semibold  ${
+                  darkMode ? "text-gray-200" : "text-gray-900"
+                } mb-1`}
+              >
                 {task.title}
               </h3>
             </Link>
-            <p className="text-sm text-gray-500 capitalize mb-2">
+            <p
+              className={`text-sm  capitalize mb-2 ${
+                darkMode ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
               {task.category}
             </p>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">
+              <span
+                className={`text-sm  ${
+                  darkMode ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
                 📅 {new Date(task.deadline).toLocaleDateString()}
               </span>
               <span className="text-sm font-semibold text-green-600">
@@ -46,8 +65,18 @@ const TaskCard = ({ task, onDelete }) => {
       </div>
 
       {isExpanded && (
-        <div className="pt-4 border-t border-gray-100 animate-fadeIn">
-          <p className="text-sm text-gray-600 mb-4">{task.description}</p>
+        <div
+          className={`pt-4 border-t ${
+            darkMode ? "border-gray-500" : "border-gray-100"
+          } animate-fadeIn`}
+        >
+          <p
+            className={`text-sm  ${
+              darkMode ? "text-gray-400" : "text-gray-600"
+            } mb-4`}
+          >
+            {task.description}
+          </p>
 
           {ownedTask && (
             <div className="flex space-x-3">

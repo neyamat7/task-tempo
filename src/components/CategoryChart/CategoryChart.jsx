@@ -1,4 +1,8 @@
+import { useTheme } from "../../context/ThemeProvider/ThemProvider";
+
 const CategoryChart = ({ tasks }) => {
+  const { darkMode } = useTheme();
+
   const totalTasks = tasks.length;
   const categories = [
     "web development",
@@ -11,8 +15,16 @@ const CategoryChart = ({ tasks }) => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-6">
+    <div
+      className={`${
+        darkMode ? "bg-card-clr border-gray-500" : "bg-white border-gray-100"
+      } rounded-2xl shadow-sm border  p-6`}
+    >
+      <h3
+        className={`text-lg font-semibold ${
+          darkMode ? "text-gray-200" : "text-gray-900"
+        } mb-6`}
+      >
         Task Categories
       </h3>
       <div className="space-y-4">
@@ -23,7 +35,11 @@ const CategoryChart = ({ tasks }) => {
           const percentage = totalTasks > 0 ? (count / totalTasks) * 100 : 0;
           return (
             <div key={category} className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700 capitalize">
+              <span
+                className={`text-sm font-medium  ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                } capitalize`}
+              >
                 {category}
               </span>
               <div className="flex items-center space-x-3">
@@ -33,7 +49,11 @@ const CategoryChart = ({ tasks }) => {
                     style={{ width: `${percentage}%` }}
                   />
                 </div>
-                <span className="text-sm font-medium text-gray-900 w-6 text-right">
+                <span
+                  className={`text-sm font-medium ${
+                    darkMode ? "text-gray-300" : "text-gray-900"
+                  }  w-6 text-right`}
+                >
                   {count}
                 </span>
               </div>

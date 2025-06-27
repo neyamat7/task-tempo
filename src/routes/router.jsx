@@ -12,6 +12,7 @@ import UpdateTask from "../components/UpdateTask/UpdateTask";
 import AllTasksPage from "../pages/Dashboard/AllTasksPage";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Overview from "../pages/Dashboard/Overview";
+import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
 import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
             <UpdateTask></UpdateTask>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "terms-and-conditions",
+        element: <TermsAndConditions />,
       },
     ],
   },

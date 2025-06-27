@@ -5,11 +5,12 @@ import StatsCard from "../../components/StatsCard/StatsCard.jsx";
 import useAuth from "../../context/AuthContext/AuthContext.jsx";
 
 import { useQuery } from "@tanstack/react-query";
+import { useTheme } from "../../context/ThemeProvider/ThemProvider.jsx";
 
 const OverviewPage = () => {
   const { user } = useAuth();
+  const { darkMode } = useTheme();
 
-  //   import react queyr
   const {
     data: tasks = [],
     isLoading,
@@ -22,7 +23,6 @@ const OverviewPage = () => {
       return data;
     },
   });
- 
 
   const totalTasks = tasks?.length;
   const myTasks = tasks?.filter((task) => task?.userUid === user.uid);
@@ -41,12 +41,22 @@ const OverviewPage = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="p-8 lg:ml-72">
+    <div
+      className={`p-8 h-full lg:ml-72 ${
+        darkMode ? "bg-dark-clr" : "bg-gray-100"
+      }`}
+    >
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <h1
+          className={`${
+            darkMode ? "text-gray-100" : "text-gray-900"
+          } text-3xl font-bold  mb-2`}
+        >
           Dashboard Overview
         </h1>
-        <p className="text-gray-600">Welcome back, {user.displayName}!</p>
+        <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+          Welcome back, {user.displayName}!
+        </p>
       </div>
 
       {/* Stats Grid */}

@@ -3,9 +3,11 @@ import Swal from "sweetalert2";
 import Loading from "../../components/Loading/Loading.jsx";
 import TaskCard from "../../components/TaskCard/TaskCard.jsx";
 import TaskTable from "../../components/TaskTable/TaskTable.jsx";
+import { useTheme } from "../../context/ThemeProvider/ThemProvider.jsx";
 
 const AllTasksPage = () => {
   const queryClient = useQueryClient();
+  const { darkMode } = useTheme();
 
   // fetch all tasks
   const {
@@ -68,11 +70,19 @@ const AllTasksPage = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="p-8 lg:ml-72">
+    <div
+      className={`p-8 h-full lg:ml-72 ${darkMode ? "bg-card-clr" : "bg-white"}`}
+    >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">All Tasks</h1>
-          <p className="text-gray-600">
+          <h1
+            className={`text-3xl font-bold ${
+              darkMode ? "text-gray-200" : "text-gray-900"
+            } mb-2`}
+          >
+            All Tasks
+          </h1>
+          <p className={`${darkMode ? "text-gray-300" : "text-gray-600"}`}>
             Manage all tasks in the system ({tasks.length} total)
           </p>
         </div>

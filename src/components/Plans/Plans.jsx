@@ -6,7 +6,7 @@ export default function Plans() {
   const { darkMode } = useTheme();
 
   return (
-    <section className={`py-20 ${darkMode ? "bg-dark-clr" : "bg-gray-100"}`}>
+    <section id="plans" className={`py-20 ${darkMode ? "bg-dark-clr" : "bg-gray-100"}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2

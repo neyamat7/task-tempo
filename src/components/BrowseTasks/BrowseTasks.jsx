@@ -36,7 +36,7 @@ const BrowseTasks = () => {
         darkMode ? "bg-dark-clr" : "bg-gray-200"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-screen-xl mx-auto px-4">
         <h2
           className={`text-3xl font-bold mb-6 text-center ${
             darkMode ? "text-gray-200" : "text-gray-800"
@@ -62,7 +62,7 @@ const BrowseTasks = () => {
           </p>
         ) : (
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 ${
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 gap-y-5 place-items-center ${
               darkMode ? "text-gray-200" : "text-dark-clr"
             }`}
           >

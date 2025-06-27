@@ -8,7 +8,7 @@ const Loading = () => {
   return (
     <div
       className={`flex flex-col items-center justify-center h-screen ${
-        darkMode ? "" : "bg-gray-200"
+        darkMode ? "bg-card-clr" : "bg-gray-200"
       } ${pathname === "/" ? "bg-transparent" : ""}  ${
         pathname === "/dashboard/all-tasks" ||
         pathname === "/dashboard/my-tasks"

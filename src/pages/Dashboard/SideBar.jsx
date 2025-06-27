@@ -1,10 +1,11 @@
 import { Link, NavLink, useLocation } from "react-router";
 import useAuth from "../../context/AuthContext/AuthContext";
+import { useTheme } from "../../context/ThemeProvider/ThemProvider";
 
 const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   // import user
   const { user } = useAuth();
-  console.log(user);
+  const { darkMode } = useTheme();
 
   const navItems = [
     {
@@ -73,7 +74,11 @@ const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
               </div>
             </div>
             <button
-              className="lg:hidden text-white hover:bg-white hover:bg-opacity-20 p-2 rounded-lg transition-all duration-200"
+              className={`lg:hidden text-white cursor-pointer ${
+                darkMode
+                  ? "hover:bg-gray-700"
+                  : "hover:bg-white hover:bg-opacity-20"
+              } p-2 rounded-lg transition-all duration-200`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ✕
@@ -119,7 +124,11 @@ const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
 
         {/* User Profile Section */}
         <div className="p-6 w-full fixed bottom-14 border-t border-white border-opacity-20">
-          <div className="flex items-center space-x-4 p-4 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm">
+          <div
+            className={`flex items-center space-x-4 p-4 ${
+              darkMode ? "bg-card-clr" : "bg-white"
+            } bg-opacity-10 rounded-xl backdrop-blur-sm`}
+          >
             <div className="relative">
               <img
                 src={
@@ -130,10 +139,16 @@ const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
               />
             </div>
             <div className="flex-1">
-              <p className="text-black">{user?.displayName}</p>
+              <p className={`${darkMode ? "text-gray-300" : "text-black"}`}>
+                {user?.displayName}
+              </p>
               <div className="flex items-center mt-1">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2" />
-                <span className="text-xs text-black text-opacity-70">
+                <span
+                  className={`text-xs ${
+                    darkMode ? "text-gray-300" : "text-black"
+                  } text-opacity-70`}
+                >
                   Online
                 </span>
               </div>

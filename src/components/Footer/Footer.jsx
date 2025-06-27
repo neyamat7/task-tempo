@@ -9,9 +9,17 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 import SmallLink from "./SmallLink";
 
 export default function Footer() {
+  const handleSubscribe = (e) => {
+    // const email = e.target.email.value;
+    e.preventDefault();
+    toast.success("Subscribed Successfully");
+    e.target.reset();
+  };
+
   return (
     <footer className="bg-hover-clr text-white">
       <div className="container mx-auto px-4 py-16">
@@ -61,7 +69,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#services"
                   className="text-gray-300 hover:text-white transition-colors flex items-center"
                 >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
@@ -70,25 +78,19 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#plans"
                   className="text-gray-300 hover:text-white transition-colors flex items-center"
                 >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Pricing
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   About Us
                 </a>
-              </li>
-              <li>
-                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
-                  <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  Contact
-                </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -96,40 +98,40 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-6">Terms & Conditions</h3>
             <ul className="space-y-3">
               <li>
-                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
+                <Link
+                  to="/terms-and-conditions"
+                  className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer"
+                >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
+                <Link
+                  to="/terms-and-conditions"
+                  className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer"
+                >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
+                <Link
+                  to="/terms-and-conditions"
+                  className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer"
+                >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Cookie Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
+                <Link
+                  to="/terms-and-conditions"
+                  className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer"
+                >
                   <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
                   Refund Policy
-                </a>
-              </li>
-              <li>
-                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
-                  <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  User Agreement
-                </a>
-              </li>
-              <li>
-                <a className="text-gray-300 hover:text-white transition-colors flex items-center cursor-pointer">
-                  <span className="w-2 h-2 bg-[#423F3E] rounded-full mr-2"></span>
-                  Intellectual Property
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -154,16 +156,23 @@ export default function Footer() {
               <h4 className="font-semibold mb-3">
                 Subscribe to our newsletter
               </h4>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="px-4 py-2 bg-card-clr text-white rounded-l-lg focus:outline-none w-full"
-                />
-                <button className="bg-dark-clr hover:bg-[#423F3E] px-4 py-2 rounded-r-lg transition-colors cursor-pointer">
-                  Subscribe
-                </button>
-              </div>
+              <form onSubmit={handleSubscribe}>
+                <div className="flex">
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    placeholder="Your email"
+                    className="px-4 py-2 bg-card-clr text-white rounded-l-lg focus:outline-none w-full"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-dark-clr hover:bg-[#423F3E] px-4 py-2 rounded-r-lg transition-colors cursor-pointer"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -174,19 +183,27 @@ export default function Footer() {
             Made with <FaHeart className="text-red-500 mx-1" /> for freelancers
           </p>
           <div className="mt-4 space-x-6">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link
+              to="/terms-and-conditions"
+              className="hover:text-white transition-colors"
+            >
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
+            </Link>
+            <Link
+              to="/terms-and-conditions"
+              className="hover:text-white transition-colors"
+            >
               Terms of Service
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
+            </Link>
+            <Link
+              to="/terms-and-conditions"
+              className="hover:text-white transition-colors"
+            >
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

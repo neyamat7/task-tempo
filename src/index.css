@@ -7,6 +7,10 @@
   --color-hover-clr: #0d121a;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px #746f6f inset !important;
   -webkit-box-shadow: 0 0 0px 1000px #9a9881 inset !important;

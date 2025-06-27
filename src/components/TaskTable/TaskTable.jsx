@@ -1,42 +1,61 @@
 import { Link } from "react-router";
 import useAuth from "../../context/AuthContext/AuthContext";
+import { useTheme } from "../../context/ThemeProvider/ThemProvider";
 
 const TaskTable = ({ tasks, onDelete }) => {
   const { user } = useAuth();
 
+  const { darkMode } = useTheme();
+
   const hasOwnedTasks = tasks.some((task) => task.userUid === user.uid);
 
+  const thClasses = `px-6 py-4 text-left text-xs font-medium uppercase tracking-wider ${
+    darkMode ? "text-gray-300" : "text-gray-500"
+  }`;
+
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div
+      className={`${
+        darkMode ? "bg-dark-clr border-gray-500" : "bg-white border-gray-100"
+      } rounded-2xl shadow-sm border  overflow-hidden`}
+    >
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+        <table
+          className={`min-w-full divide-y ${
+            darkMode ? "divide-gray-500" : "divide-gray-200"
+          }`}
+        >
+          <thead className={`${darkMode ? "bg-card-clr" : "bg-gray-50"}`}>
             <tr>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Task
-              </th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Category
-              </th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Deadline
-              </th>
-              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Budget
-              </th>
+              <th className={thClasses}>Task</th>
+              <th className={thClasses}>Category</th>
+              <th className={thClasses}>Deadline</th>
+              <th className={thClasses}>Budget</th>
 
               {hasOwnedTasks && (
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th
+                  className={`px-6 py-4 text-left text-xs font-medium ${
+                    darkMode ? "text-gray-300" : "text-gray-500"
+                  } uppercase tracking-wider`}
+                >
                   Actions
                 </th>
               )}
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody
+            className={`${
+              darkMode
+                ? "bg-hover-clr divide-gray-500"
+                : "bg-white divide-gray-200"
+            } divide-y `}
+          >
             {tasks.map((task) => (
               <tr
                 key={task.id}
-                className="hover:bg-gray-50 transition-colors duration-200"
+                className={`${
+                  darkMode ? "hover:bg-gray-800" : "hover:bg-gray-50"
+                } transition-colors duration-200`}
               >
                 <td className="px-6 py-4">
                   <div className="flex items-center">
@@ -48,7 +67,11 @@ const TaskTable = ({ tasks, onDelete }) => {
                       className="w-12 h-12 rounded-lg object-cover shadow-sm"
                     />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div
+                        className={`text-sm font-medium  ${
+                          darkMode ? "text-gray-300" : "text-gray-900"
+                        }`}
+                      >
                         {task.title}
                       </div>
                       <div className="text-sm text-gray-500 truncate max-w-xs">
@@ -58,11 +81,19 @@ const TaskTable = ({ tasks, onDelete }) => {
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="text-sm text-gray-900 capitalize">
+                  <span
+                    className={`text-sm ${
+                      darkMode ? "text-gray-300" : "text-gray-900"
+                    } capitalize`}
+                  >
                     {task.category}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td
+                  className={`px-6 py-4 whitespace-nowrap text-sm ${
+                    darkMode ? "text-gray-300" : "text-gray-900"
+                  }`}
+                >
                   {new Date(task.deadline).toLocaleDateString()}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">
