@@ -111,7 +111,7 @@ const BrowseTasks = () => {
               id="sortOrder"
               onChange={(e) => {
                 const order = e.target.value;
-                const sorted = [...tasks].sort((a, b) => {
+                const sorted = [...filteredTasks].sort((a, b) => {
                   const dateA = new Date(a.deadline);
                   const dateB = new Date(b.deadline);
                   return order === "asc" ? dateA - dateB : dateB - dateA;
