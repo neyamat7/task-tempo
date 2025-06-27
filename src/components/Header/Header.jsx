@@ -50,7 +50,7 @@ const Header = () => {
           } text-gray-800`
         }
       >
-        Browse Tasks
+        All Tasks
       </NavLink>
 
       <NavLink
@@ -98,7 +98,7 @@ const Header = () => {
           } ${darkMode ? "text-gray-200" : "text-gray-800"}`
         }
       >
-        Browse Tasks
+        All Tasks
       </NavLink>
 
       {user && (

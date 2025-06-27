@@ -8,6 +8,7 @@ const BrowseTasks = () => {
 
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filteredTasks, setFilteredTasks] = useState([]);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -16,6 +17,7 @@ const BrowseTasks = () => {
         const data = await res.json();
 
         setTasks(data);
+        setFilteredTasks(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -52,7 +54,81 @@ const BrowseTasks = () => {
           Find freelance work that matches your skills and interests.
         </p>
 
-        {tasks.length === 0 ? (
+        {/* filtering option */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 px-4">
+          {/* Filter by category */}
+          <div className="flex items-center gap-2">
+            <label
+              htmlFor="categoryFilter"
+              className={`text-sm font-medium ${
+                darkMode ? "text-gray-300" : "text-gray-700"
+              }`}
+            >
+              Filter by Category:
+            </label>
+            <select
+              id="categoryFilter"
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value === "") {
+                  setFilteredTasks(tasks);
+                } else {
+                  setFilteredTasks(
+                    tasks.filter((task) => task.category === value)
+                  );
+                }
+              }}
+              className="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-sm text-gray-900"
+            >
+              <option className="text-gray-900" value="">
+                All
+              </option>
+              {[...new Set(tasks.map((task) => task.category))].map(
+                (category) => (
+                  <option
+                    className="text-gray-900"
+                    key={category}
+                    value={category}
+                  >
+                    {category}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+
+          {/* Sort by date */}
+          <div className="flex items-center gap-2">
+            <label
+              htmlFor="sortOrder"
+              className={`text-sm font-medium ${
+                darkMode ? "text-gray-300" : "text-gray-700"
+              }`}
+            >
+              Sort by Date:
+            </label>
+            <select
+              id="sortOrder"
+              onChange={(e) => {
+                const order = e.target.value;
+                const sorted = [...tasks].sort((a, b) => {
+                  const dateA = new Date(a.deadline);
+                  const dateB = new Date(b.deadline);
+                  return order === "asc" ? dateA - dateB : dateB - dateA;
+                });
+                setFilteredTasks(sorted);
+              }}
+              className="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 text-sm"
+            >
+              <option className="text-gray-900" value="desc">
+                Closest First
+              </option>
+              <option value="asc">Farthest First</option>
+            </select>
+          </div>
+        </div>
+
+        {filteredTasks.length === 0 ? (
           <p
             className={`text-center py-10 ${
               darkMode ? "text-gray-400" : "text-gray-800"
@@ -66,7 +142,7 @@ const BrowseTasks = () => {
               darkMode ? "text-gray-200" : "text-dark-clr"
             }`}
           >
-            {tasks.map((task) => (
+            {filteredTasks.map((task) => (
               <TaskItem key={task._id} task={task}></TaskItem>
             ))}
           </div>
