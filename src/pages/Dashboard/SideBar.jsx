@@ -4,6 +4,7 @@ import useAuth from "../../context/AuthContext/AuthContext";
 const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   // import user
   const { user } = useAuth();
+  console.log(user);
 
   const navItems = [
     {
@@ -52,16 +53,17 @@ const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
 
       {/* Sidebar - Full Height Modern Design */}
       <div
-        className={`fixed top-0 left-0 w-72 h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 shadow-2xl  z-50  transform transition-all duration-300 ease-in-out lg:translate-x-0  inset-y-0  ${
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 w-72 h-screen bg-gradient-to-br from-slate-600 via-gray-500 to-slate-700
+ shadow-2xl  z-50  transform transition-all duration-300 ease-in-out lg:translate-x-0  inset-y-0  ${
+   isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+ }`}
       >
         <div className="flex flex-col h-full">
           {/* Header Section */}
           <div className="flex items-center justify-between h-20 px-8 border-b border-white border-opacity-20">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white bg-opacity-20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                <span className="text-white text-xl font-bold">T</span>
+                <span className="text-black text-xl font-bold">T</span>
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">TaskTempo</h1>
@@ -100,12 +102,8 @@ const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
                       <span className="text-lg">{item.icon}</span>
                     </div>
                     <div className="flex-1">
-                      <div className="font-medium">{item.label}</div>
-                      <div
-                        className={`text-xs text-opacity-60 ${
-                          isActiveRoute(item.link) ? "text-black" : "text-white"
-                        }`}
-                      >
+                      <div className="font-medium ">{item.label}</div>
+                      <div className={`text-sm  text-white/80`}>
                         {item.description}
                       </div>
                     </div>
@@ -124,13 +122,15 @@ const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
           <div className="flex items-center space-x-4 p-4 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm">
             <div className="relative">
               <img
-                src={user?.avatar || "https://i.postimg.cc/15ndmBW5/images.png"}
-                alt={user?.name}
+                src={
+                  user?.photoURL || "https://i.postimg.cc/15ndmBW5/images.png"
+                }
+                alt={user?.displayName}
                 className="w-12 h-12 rounded-full border-2 border-white border-opacity-30"
               />
             </div>
             <div className="flex-1">
-              <p className="text-black">{user?.name || "Rakibul"}</p>
+              <p className="text-black">{user?.displayName}</p>
               <div className="flex items-center mt-1">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2" />
                 <span className="text-xs text-black text-opacity-70">

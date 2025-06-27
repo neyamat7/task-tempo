@@ -65,14 +65,14 @@ const Header = () => {
       </NavLink>
 
       <NavLink
-        to="/my-tasks"
+        to="/dashboard"
         className={({ isActive }) =>
           `btn bg-gray-50 text-lg ${
             isActive ? "underline font-medium" : "font-normal"
           } text-gray-800`
         }
       >
-        My Tasks
+        Dashboard
       </NavLink>
     </>
   );
@@ -113,16 +113,7 @@ const Header = () => {
           >
             Add Task
           </NavLink>
-          <NavLink
-            to="/my-tasks"
-            className={({ isActive }) =>
-              `btn bg-gray-50 text-base font-normal md:!p-0 md:!bg-transparent md:!shadow-none md:!border-none ${
-                isActive ? "underline font-medium" : "font-normal"
-              } ${darkMode ? "text-gray-200" : "text-gray-800"}`
-            }
-          >
-            My Tasks
-          </NavLink>
+
           <NavLink
             to="/dashboard"
             className={({ isActive }) =>
@@ -149,7 +140,7 @@ const Header = () => {
         } ${user ? "hidden" : "flex"} ${
           darkMode
             ? "bg-dark-clr text-gray-200 hover:bg-[#423F3E]"
-            : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+            : "bg-gray-100 text-gray-800 hover:bg-gray-200 border-none"
         }`}
       >
         Login
@@ -225,6 +216,19 @@ const Header = () => {
         <div className="flex items-center gap-2">
           {!user && <div className="hidden sm:flex gap-3">{buttonLinks}</div>}
 
+          {/* dark and light mode */}
+          <button
+            onClick={toggleTheme}
+            className={`btn btn-sm btn-ghost btn-circle transition-colors ${
+              darkMode
+                ? "hover:bg-dark-clr border border-gray-50"
+                : "hover:bg-gray-200 border border-gray-400 text-black"
+            }`}
+            aria-label="Toggle Theme"
+          >
+            {!darkMode ? <DarkIcon /> : <LightIcon />}
+          </button>
+
           {user && (
             <div className="dropdown dropdown-end dropdown-hover">
               <div
@@ -285,19 +289,6 @@ const Header = () => {
               </ul>
             </div>
           )}
-
-          {/* dark and light mode */}
-          <button
-            onClick={toggleTheme}
-            className={`btn btn-sm btn-ghost btn-circle transition-colors ${
-              darkMode
-                ? "hover:bg-dark-clr border border-gray-50"
-                : "hover:bg-gray-200 border border-gray-400 text-black"
-            }`}
-            aria-label="Toggle Theme"
-          >
-            {!darkMode ? <DarkIcon /> : <LightIcon />}
-          </button>
         </div>
       </div>
     </div>

@@ -9,7 +9,9 @@ import MyPostedTask from "../components/MyPostedTask/MyPostedTask";
 import SignUp from "../components/SignUp/SignUp";
 import TaskDetails from "../components/TaskDetailis/TaskDetailis";
 import UpdateTask from "../components/UpdateTask/UpdateTask";
+import AllTasksPage from "../pages/Dashboard/AllTasksPage";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Overview from "../pages/Dashboard/Overview";
 import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
@@ -76,6 +78,22 @@ export const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      {
+        index: true,
+        element: (
+          <PrivateRoutes>
+            <Overview />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "all-tasks",
+        element: (
+          <PrivateRoutes>
+            <AllTasksPage />
+          </PrivateRoutes>
+        ),
+      },
       {
         path: "my-tasks",
         element: (

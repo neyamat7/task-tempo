@@ -9,10 +9,14 @@ const Loading = () => {
     <div
       className={`flex flex-col items-center justify-center h-screen ${
         darkMode ? "" : "bg-gray-200"
-      } ${pathname === "/" ? "bg-transparent" : ""} `}
+      } ${pathname === "/" ? "bg-transparent" : ""}  ${
+        pathname === "/dashboard/all-tasks" ||
+        pathname === "/dashboard/my-tasks"
+          ? "lg:ml-72"
+          : ""
+      }`}
     >
       <div className="relative w-16 h-16 mb-4">
-     
         <div
           className={`absolute top-0 left-0 w-full h-full rounded-full border-4 border-transparent animate-spin ${
             darkMode ? "ring-2 ring-[#85A947]/30" : "ring-2 ring-[#85A947]/20"
@@ -23,7 +27,7 @@ const Loading = () => {
               : "linear-gradient(45deg, #85A947, #FF6B6B, #4ECDC4) 1",
           }}
         ></div>
- 
+
         <div
           className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center animate-bounce ${
             darkMode

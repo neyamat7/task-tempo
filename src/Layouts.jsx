@@ -16,7 +16,6 @@ const Layouts = () => {
       <Header></Header>
       <Outlet></Outlet>
       <Footer></Footer>
-      <ToastContainer />
     </div>
   );
 };

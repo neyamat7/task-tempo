@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaRegLightbulb } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
@@ -11,6 +11,7 @@ import Loading from "../Loading/Loading";
 
 const MyPostedTasksTable = () => {
   const { darkMode } = useTheme();
+  const { pathname } = useLocation();
 
   const { user, setBids } = useAuth();
 
@@ -81,7 +82,11 @@ const MyPostedTasksTable = () => {
   }
 
   return (
-    <section className={`py-28 ${darkMode ? "bg-dark-clr" : "bg-gray-200"}`}>
+    <section
+      className={`py-28 ${
+        pathname === "/dashboard/my-tasks" ? "min-h-screen lg:ml-72" : ""
+      } ${darkMode ? "bg-dark-clr" : "bg-gray-200"}`}
+    >
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-10 text-center">
           <h2
@@ -103,7 +108,7 @@ const MyPostedTasksTable = () => {
 
         {tasks.length < 1 ? (
           <div
-            className={`flex flex-col items-center justify-center py-16 px-6 rounded-xl ${
+            className={`flex flex-col items-center justify-center py-12 px-6 rounded-xl ${
               darkMode
                 ? "bg-card-clr border border-[#423F3E]/30"
                 : "bg-white border border-gray-200"

@@ -184,6 +184,14 @@ const TaskDetails = () => {
             </div>
           </div>
 
+          <div className="p-6">
+            <img
+              src={task.photoUrl}
+              alt=""
+              className=" w-full h-52 md:h-96 object-cover rounded-md"
+            />
+          </div>
+
           <div
             className={`p-6 ${
               darkMode ? "border-b border-gray-700" : "border-b border-gray-200"

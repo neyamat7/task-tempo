@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import useAuth from "../../context/AuthContext/AuthContext";
 import { useTheme } from "../../context/ThemeProvider/ThemProvider";
@@ -14,6 +14,7 @@ const AddTask = () => {
   const { user } = useAuth();
   const { darkMode } = useTheme();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const [taskData, setTaskData] = useState({
     title: "",
@@ -80,7 +81,9 @@ const AddTask = () => {
             bids: [],
           });
 
-          navigate("/browse-task");
+          pathname === "/dashboard/add-task"
+            ? navigate("/dashboard/all-tasks")
+            : navigate("/browse-task");
         }
       })
       .catch((err) => {
@@ -95,9 +98,9 @@ const AddTask = () => {
 
   return (
     <div
-      className={`min-h-screen py-12 px-4 ${
-        darkMode ? "bg-dark-clr" : "bg-gray-200"
-      }`}
+      className={`min-h-screen py-12 ${
+        pathname === "/dashboard/add-task" ? "lg:ml-72" : ""
+      }  px-4 ${darkMode ? "bg-dark-clr" : "bg-gray-200"}`}
     >
       <div
         className={`max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden ${
