@@ -1,10 +1,10 @@
-# TaskTempo
+# TaskHarbour
 
 ![site overview](https://i.postimg.cc/mkmNmTwW/localhost-5173.png)
 
 ## 📋 Project Overview
 
-TaskTempo is a dynamic task management solution tailored for freelancers and clients, enabling efficient task posting, discovery, and handling. With robust authentication, complete CRUD functionality, and an intuitive design, it streamlines task collaboration.
+TaskHarbour is a dynamic task management solution tailored for freelancers and clients, enabling efficient task posting, discovery, and handling. With robust authentication, complete CRUD functionality, and an intuitive design, it streamlines task collaboration.
 
 ## ✨ Key Features
 
@@ -86,4 +86,4 @@ npm run build
 
 ## 🌐 Live Link
 
-**[TaskTempo Live Site](https://task-tempo.netlify.app/)**
+**[TaskHarbour Live Site](https://task-tempo.netlify.app/)**

@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <h3 className="text-2xl font-bold mb-6">TaskTempo</h3>
+            <h3 className="text-2xl font-bold mb-6">TaskHarbour</h3>
             <p className="text-gray-300 mb-6 text-lg">
               The premier marketplace for freelancers and clients to connect,
               collaborate, and create amazing results together.
@@ -149,7 +149,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <FaEnvelope className="mr-3 flex-shrink-0 text-[#423F3E]" />
-                <span>support@tasktempo.com</span>
+                <span>support@TaskHarbour.com</span>
               </li>
             </ul>
             <div className="mt-6 pt-6 border-t border-gray-700">
@@ -179,7 +179,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
           <p className="flex items-center justify-center">
-            &copy; {new Date().getFullYear()} TaskTempo. All rights reserved.
+            &copy; {new Date().getFullYear()} TaskHarbour. All rights reserved.
             Made with <FaHeart className="text-red-500 mx-1" /> for freelancers
           </p>
           <div className="mt-4 space-x-6">

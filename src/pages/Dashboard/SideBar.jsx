@@ -67,7 +67,7 @@ const SideBar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
                 <span className="text-black text-xl font-bold">T</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">TaskTempo</h1>
+                <h1 className="text-xl font-bold text-white">TaskHarbour</h1>
                 <p className="text-xs text-white text-opacity-70">
                   Freelance Task Management
                 </p>

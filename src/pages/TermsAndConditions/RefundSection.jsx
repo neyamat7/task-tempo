@@ -22,7 +22,7 @@ const RefundSection = () => {
                   Our Commitment
                 </h3>
                 <p className="text-slate-700">
-                  We want you to be completely satisfied with TaskTempo. If
+                  We want you to be completely satisfied with TaskHarbour. If
                   you're not happy with our service, we're here to help with our
                   fair refund policy.
                 </p>
@@ -163,10 +163,10 @@ const RefundSection = () => {
                     <p className="text-sm text-slate-700">
                       Email us at{" "}
                       <a
-                        href="mailto:refunds@tasktempo.com"
+                        href="mailto:refunds@TaskHarbour.com"
                         className="text-slate-900 font-medium hover:underline"
                       >
-                        refunds@tasktempo.com
+                        refunds@TaskHarbour.com
                       </a>
                     </p>
                   </div>
@@ -267,10 +267,10 @@ const RefundSection = () => {
                     </h5>
                     <p className="text-slate-700">
                       <a
-                        href="mailto:refunds@tasktempo.com"
+                        href="mailto:refunds@TaskHarbour.com"
                         className="text-slate-900 font-medium hover:underline"
                       >
-                        refunds@tasktempo.com
+                        refunds@TaskHarbour.com
                       </a>
                     </p>
                   </div>

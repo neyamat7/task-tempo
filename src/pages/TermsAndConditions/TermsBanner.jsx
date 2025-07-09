@@ -10,7 +10,7 @@ const TermsBanner = () => {
           </h1>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
             Your trust is important to us. Learn about our terms, privacy
-            practices, and policies that govern your use of TaskTempo.
+            practices, and policies that govern your use of TaskHarbour.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4">

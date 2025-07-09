@@ -22,7 +22,7 @@ const TermsSection = () => {
                   Important Notice
                 </h3>
                 <p className="text-slate-700">
-                  By accessing and using TaskTempo, you agree to be bound by
+                  By accessing and using TaskHarbour, you agree to be bound by
                   these Terms of Service and all applicable laws and
                   regulations.
                 </p>
@@ -36,7 +36,7 @@ const TermsSection = () => {
                 1. Acceptance of Terms
               </h3>
               <p className="text-slate-700 mb-4">
-                Welcome to TaskTempo, a freelance task management platform.
+                Welcome to TaskHarbour, a freelance task management platform.
                 These Terms of Service ("Terms") govern your use of our website
                 and services. By creating an account or using our services, you
                 agree to these Terms.
@@ -48,7 +48,7 @@ const TermsSection = () => {
                 2. Description of Service
               </h3>
               <p className="text-slate-700 mb-4">
-                TaskTempo provides a platform for freelancers and clients to
+                TaskHarbour provides a platform for freelancers and clients to
                 manage tasks, projects, and collaborate effectively. Our
                 services include:
               </p>
@@ -85,7 +85,7 @@ const TermsSection = () => {
                 3. User Accounts
               </h3>
               <p className="text-slate-700 mb-4">
-                To use TaskTempo, you must create an account. You are
+                To use TaskHarbour, you must create an account. You are
                 responsible for:
               </p>
               <ul className="space-y-2">
@@ -115,7 +115,7 @@ const TermsSection = () => {
                 4. Prohibited Uses
               </h3>
               <p className="text-slate-700 mb-4">
-                You may not use TaskTempo for any unlawful purpose or in
+                You may not use TaskHarbour for any unlawful purpose or in
                 violation of these Terms. Prohibited activities include:
               </p>
               <ul className="space-y-2">
@@ -151,7 +151,7 @@ const TermsSection = () => {
                 5. Limitation of Liability
               </h3>
               <p className="text-slate-700">
-                TaskTempo shall not be liable for any indirect, incidental,
+                TaskHarbour shall not be liable for any indirect, incidental,
                 special, consequential, or punitive damages resulting from your
                 use of the service. Our total liability shall not exceed the
                 amount paid by you for the service in the 12 months preceding
@@ -166,7 +166,7 @@ const TermsSection = () => {
               <p className="text-slate-700">
                 We reserve the right to modify these Terms at any time. We will
                 notify users of significant changes via email or through the
-                platform. Continued use of TaskTempo after changes constitutes
+                platform. Continued use of TaskHarbour after changes constitutes
                 acceptance of the new Terms.
               </p>
             </div>

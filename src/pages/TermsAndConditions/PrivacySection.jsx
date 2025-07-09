@@ -22,8 +22,8 @@ const PrivacySection = () => {
                   Your Privacy Matters
                 </h3>
                 <p className="text-slate-700">
-                  At TaskTempo, we are committed to protecting your privacy and
-                  ensuring the security of your personal information.
+                  At TaskHarbour, we are committed to protecting your privacy
+                  and ensuring the security of your personal information.
                 </p>
               </div>
             </div>
@@ -214,10 +214,10 @@ const PrivacySection = () => {
                 If you have any questions about this Privacy Policy or our data
                 practices, please contact us at{" "}
                 <a
-                  href="mailto:privacy@tasktempo.com"
+                  href="mailto:privacy@TaskHarbour.com"
                   className="text-slate-900 font-medium hover:underline"
                 >
-                  privacy@tasktempo.com
+                  privacy@TaskHarbour.com
                 </a>
               </p>
             </div>
